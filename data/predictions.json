@@ -1,106 +1,310 @@
 {
-  "generated_at_jst": "2026-11-23 20:00:52",
-  "window_jst": "2026-11-23 19:00 〜 2026-11-24 09:00",
-  "match_count": 3,
+  "generated_at_jst": "2026-11-24 06:41:16",
+  "window_jst": "2026-11-24 19:00 〜 2026-11-25 09:00",
+  "match_count": 9,
   "matches": [
     {
-      "id": "99776445d5a5f4ed008f9a6d6a1495b7",
-      "league": "セリエA",
-      "kickoff_jst": "2026-11-24 04:45",
-      "home": "Monza [18位 得点17/失点25]",
-      "away": "Fiorentina [15位 得点17/失点25]",
-      "favorite_side": "AWAY",
-      "favorite_team": "Fiorentina",
+      "id": "3fb5e4a792cf34a0459efcb79a11a785",
+      "league": "CL",
+      "kickoff_jst": "2026-11-25 05:00",
+      "home": "Real Madrid [2位 得点13/失点7 直近:勝勝勝勝]",
+      "away": "PSV Eindhoven [24位 得点3/失点4 直近:分負勝負]",
+      "favorite_side": "HOME",
+      "favorite_team": "Real Madrid",
       "odds_avg": {
-        "fav": 1.92,
-        "draw": 3.76,
-        "dog": 3.63
+        "fav": 1.16,
+        "draw": 8.72,
+        "dog": 12.48
       },
-      "fav_odds_range": "1.78〜2.02",
+      "fav_odds_range": "1.10〜1.21",
       "fair_prob_pct": {
-        "fav": 49.0,
-        "draw": 25.0,
-        "dog": 26.0
+        "fav": 81.5,
+        "draw": 10.9,
+        "dog": 7.6
       },
-      "estimated_handicap": "0/8",
+      "estimated_handicap": "1半7",
       "metrics_at_est": {
-        "full_win_pct": 49.0,
-        "get_pct": 49.0,
+        "full_win_pct": 37.7,
+        "get_pct": 60.4,
+        "ev_pct": 2.6
+      },
+      "preliminary_type": "確信型候補",
+      "preliminary_stars": 4,
+      "alerts": [
+        "CL: 本命優位傾向"
+      ],
+      "blowout_auto": "2/4項目(休養差除く)",
+      "bookmaker_count": 40
+    },
+    {
+      "id": "e422af92d1fc06c0a330838c1c2f2e08",
+      "league": "CL",
+      "kickoff_jst": "2026-11-25 02:45",
+      "home": "Galatasaray [18位 得点8/失点9 直近:負負勝勝]",
+      "away": "Aston Villa [6位 得点12/失点6 直近:勝勝勝負]",
+      "favorite_side": "AWAY",
+      "favorite_team": "Aston Villa",
+      "odds_avg": {
+        "fav": 2.2,
+        "draw": 3.9,
+        "dog": 2.87
+      },
+      "fav_odds_range": "2.00〜2.32",
+      "fair_prob_pct": {
+        "fav": 42.9,
+        "draw": 24.2,
+        "dog": 32.9
+      },
+      "estimated_handicap": "0/3",
+      "metrics_at_est": {
+        "full_win_pct": 42.9,
+        "get_pct": 42.9,
         "ev_pct": 0.5
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [
+        "CL: 本命優位傾向",
         "業者間オッズ差大"
       ],
-      "blowout_auto": "1/4項目(休養差除く)",
-      "bookmaker_count": 42
+      "blowout_auto": "2/4項目(休養差除く)",
+      "bookmaker_count": 40
     },
     {
-      "id": "aa77e2a08a1a003b0bbb62a5f8e8ae42",
-      "league": "プレミアリーグ",
-      "kickoff_jst": "2026-11-24 05:00",
-      "home": "Brentford [10位 得点16/失点11]",
-      "away": "Everton [7位 得点12/失点10]",
+      "id": "50b80f3ebd38bf63663b11ae0afc575b",
+      "league": "CL",
+      "kickoff_jst": "2026-11-25 02:45",
+      "home": "Bodø/Glimt [25位 得点4/失点9 直近:負勝負分]",
+      "away": "LASK [16位 得点10/失点9 直近:負負勝勝]",
       "favorite_side": "HOME",
-      "favorite_team": "Brentford",
+      "favorite_team": "Bodø/Glimt",
       "odds_avg": {
-        "fav": 2.24,
-        "draw": 3.47,
-        "dog": 3.11
+        "fav": 1.48,
+        "draw": 5.01,
+        "dog": 5.35
       },
-      "fav_odds_range": "2.05〜2.36",
+      "fav_odds_range": "1.40〜1.53",
       "fair_prob_pct": {
-        "fav": 42.3,
-        "draw": 27.3,
-        "dog": 30.4
+        "fav": 63.6,
+        "draw": 18.8,
+        "dog": 17.6
+      },
+      "estimated_handicap": "1.0",
+      "metrics_at_est": {
+        "full_win_pct": 40.5,
+        "get_pct": 40.5,
+        "ev_pct": 2.0
+      },
+      "preliminary_type": "参考（ハンデ確認要）",
+      "preliminary_stars": 2,
+      "alerts": [
+        "CL: 本命優位傾向"
+      ],
+      "blowout_auto": "1/4項目(休養差除く)",
+      "bookmaker_count": 39
+    },
+    {
+      "id": "ba719e378ac366262013bdb51a06aa6f",
+      "league": "CL",
+      "kickoff_jst": "2026-11-25 05:00",
+      "home": "Como [4位 得点19/失点6 直近:勝負勝勝]",
+      "away": "AEK Athens",
+      "favorite_side": "HOME",
+      "favorite_team": "Como",
+      "odds_avg": {
+        "fav": 1.25,
+        "draw": 6.36,
+        "dog": 9.75
+      },
+      "fav_odds_range": "1.17〜1.30",
+      "fair_prob_pct": {
+        "fav": 75.5,
+        "draw": 14.8,
+        "dog": 9.7
+      },
+      "estimated_handicap": "1半",
+      "metrics_at_est": {
+        "full_win_pct": 53.3,
+        "get_pct": 53.3,
+        "ev_pct": 4.0
+      },
+      "preliminary_type": "参考（ハンデ確認要）",
+      "preliminary_stars": 2,
+      "alerts": [
+        "CL: 本命優位傾向"
+      ],
+      "blowout_auto": null,
+      "bookmaker_count": 40
+    },
+    {
+      "id": "aee4e3c225603397ab52de3d066b566b",
+      "league": "CL",
+      "kickoff_jst": "2026-11-25 05:00",
+      "home": "Arsenal [3位 得点8/失点3 直近:勝勝分勝]",
+      "away": "Borussia Dortmund [12位 得点7/失点5 直近:勝負勝勝]",
+      "favorite_side": "HOME",
+      "favorite_team": "Arsenal",
+      "odds_avg": {
+        "fav": 1.39,
+        "draw": 4.86,
+        "dog": 7.34
+      },
+      "fav_odds_range": "1.28〜1.45",
+      "fair_prob_pct": {
+        "fav": 67.7,
+        "draw": 19.4,
+        "dog": 12.9
+      },
+      "estimated_handicap": "1.5",
+      "metrics_at_est": {
+        "full_win_pct": 44.3,
+        "get_pct": 44.3,
+        "ev_pct": -1.9
+      },
+      "preliminary_type": "参考（ハンデ確認要）",
+      "preliminary_stars": 2,
+      "alerts": [
+        "CL: 本命優位傾向",
+        "業者間オッズ差大"
+      ],
+      "blowout_auto": "2/4項目(休養差除く)",
+      "bookmaker_count": 40
+    },
+    {
+      "id": "9a2ebad454db4ab3d53b89e96c79847a",
+      "league": "CL",
+      "kickoff_jst": "2026-11-25 05:00",
+      "home": "Feyenoord [32位 得点4/失点11 直近:負勝負負]",
+      "away": "Porto [26位 得点6/失点7 直近:負負負勝]",
+      "favorite_side": "AWAY",
+      "favorite_team": "Porto",
+      "odds_avg": {
+        "fav": 2.29,
+        "draw": 3.65,
+        "dog": 2.87
+      },
+      "fav_odds_range": "2.10〜2.44",
+      "fair_prob_pct": {
+        "fav": 41.3,
+        "draw": 25.9,
+        "dog": 32.8
       },
       "estimated_handicap": "0/3",
       "metrics_at_est": {
-        "full_win_pct": 42.3,
-        "get_pct": 42.3,
-        "ev_pct": 1.6
+        "full_win_pct": 41.3,
+        "get_pct": 41.3,
+        "ev_pct": -1.4
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [
+        "CL: 本命優位傾向",
         "業者間オッズ差大"
       ],
-      "blowout_auto": "0/4項目(休養差除く)",
-      "bookmaker_count": 43
+      "blowout_auto": "2/4項目(休養差除く)",
+      "bookmaker_count": 40
     },
     {
-      "id": "afae1c9d986e4ab2200dc9bd44b6b6c4",
-      "league": "ラ・リーガ",
-      "kickoff_jst": "2026-11-24 05:00",
-      "home": "Levante [18位 得点16/失点21]",
-      "away": "Elche CF [19位 得点14/失点20]",
+      "id": "b9f00a4d399ec661e733857c9d5fb2dc",
+      "league": "CL",
+      "kickoff_jst": "2026-11-25 05:00",
+      "home": "Manchester City",
+      "away": "Napoli [27位 得点6/失点11 直近:負負勝負]",
       "favorite_side": "HOME",
-      "favorite_team": "Levante",
+      "favorite_team": "Manchester City",
       "odds_avg": {
-        "fav": 2.13,
-        "draw": 3.57,
-        "dog": 3.19
+        "fav": 1.27,
+        "draw": 6.25,
+        "dog": 9.05
       },
-      "fav_odds_range": "2.00〜2.26",
+      "fav_odds_range": "1.12〜1.32",
       "fair_prob_pct": {
-        "fav": 44.1,
-        "draw": 26.4,
-        "dog": 29.5
+        "fav": 74.5,
+        "draw": 15.1,
+        "dog": 10.4
       },
-      "estimated_handicap": "0/5",
+      "estimated_handicap": "1半",
       "metrics_at_est": {
-        "full_win_pct": 44.1,
-        "get_pct": 44.1,
-        "ev_pct": -0.8
+        "full_win_pct": 51.3,
+        "get_pct": 51.3,
+        "ev_pct": 0.1
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [
+        "CL: 本命優位傾向",
         "業者間オッズ差大"
       ],
-      "blowout_auto": "1/4項目(休養差除く)",
-      "bookmaker_count": 38
+      "blowout_auto": null,
+      "bookmaker_count": 40
+    },
+    {
+      "id": "aea973c122c91837c15e066c757c747f",
+      "league": "CL",
+      "kickoff_jst": "2026-11-25 05:00",
+      "home": "RB Leipzig [29位 得点5/失点11 直近:負勝負負]",
+      "away": "RC Lens [33位 得点4/失点16 直近:勝負負負]",
+      "favorite_side": "HOME",
+      "favorite_team": "RB Leipzig",
+      "odds_avg": {
+        "fav": 1.38,
+        "draw": 5.56,
+        "dog": 6.57
+      },
+      "fav_odds_range": "1.29〜1.46",
+      "fair_prob_pct": {
+        "fav": 68.6,
+        "draw": 17.0,
+        "dog": 14.4
+      },
+      "estimated_handicap": "1.5",
+      "metrics_at_est": {
+        "full_win_pct": 44.9,
+        "get_pct": 44.9,
+        "ev_pct": -0.6
+      },
+      "preliminary_type": "参考（ハンデ確認要）",
+      "preliminary_stars": 2,
+      "alerts": [
+        "CL: 本命優位傾向",
+        "業者間オッズ差大"
+      ],
+      "blowout_auto": "2/4項目(休養差除く)",
+      "bookmaker_count": 40
+    },
+    {
+      "id": "8e93849b4c1ccbf1c207836d5c470150",
+      "league": "CL",
+      "kickoff_jst": "2026-11-25 05:00",
+      "home": "ŠK Slovan Bratislava",
+      "away": "Real Betis [11位 得点8/失点6 直近:勝勝勝負]",
+      "favorite_side": "AWAY",
+      "favorite_team": "Real Betis",
+      "odds_avg": {
+        "fav": 1.24,
+        "draw": 6.5,
+        "dog": 10.16
+      },
+      "fav_odds_range": "1.15〜1.30",
+      "fair_prob_pct": {
+        "fav": 76.1,
+        "draw": 14.6,
+        "dog": 9.3
+      },
+      "estimated_handicap": "1半",
+      "metrics_at_est": {
+        "full_win_pct": 53.8,
+        "get_pct": 53.8,
+        "ev_pct": 4.9
+      },
+      "preliminary_type": "参考（ハンデ確認要）",
+      "preliminary_stars": 2,
+      "alerts": [
+        "CL: 本命優位傾向",
+        "業者間オッズ差大"
+      ],
+      "blowout_auto": null,
+      "bookmaker_count": 40
     }
   ]
 }
