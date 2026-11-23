@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海外サッカー 自動予想サイト</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; background: #f8fafc; color: #0f172a; padding-bottom: 48px; }
+    header { background: #0f172a; color: #ffffff; padding: 14px 16px; position: sticky; top: 0; z-index: 10; }
+    header h1 { font-size: 16px; font-weight: 700; }
+    header p { font-size: 12px; color: #cbd5e1; margin-top: 4px; }
+    main { max-width: 600px; margin: 0 auto; padding: 14px 16px; }
+    .filters { display: flex; gap: 8px; margin-bottom: 14px; }
+    .filter-btn { flex: 1; padding: 10px; border-radius: 10px; font-size: 13px; font-weight: 700; border: 1px solid #cbd5e1; background: #ffffff; color: #334155; cursor: pointer; }
+    .filter-btn.active { background: #0f172a; color: #ffffff; border-color: #0f172a; }
+    .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px; margin-bottom: 12px; }
+    .row-top { display: flex; justify-content: space-between; align-items: center; font-size: 12px; margin-bottom: 8px; }
+    .badge { background: #eff6ff; color: #1d4ed8; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
+    .time { color: #64748b; font-weight: 600; }
+    .teams { font-size: 15px; font-weight: 700; margin-bottom: 4px; line-height: 1.4; }
+    .fav { font-size: 12px; color: #475569; margin-bottom: 8px; }
+    .alerts { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .alert-tag { background: #fef3c7; color: #92400e; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; }
+    .mid-box { display: flex; justify-content: space-between; align-items: center; background: #f1f5f9; border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; }
+    .est-label { font-size: 11px; color: #64748b; }
+    .est-val { font-size: 17px; font-weight: 700; }
+    .stars { font-size: 13px; font-weight: 700; color: #d97706; text-align: right; }
+    .type { font-size: 11px; color: #475569; text-align: right; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; text-align: center; margin-bottom: 10px; }
+    .stat-box { background: #f8fafc; border-radius: 8px; padding: 6px 4px; }
+    .stat-label { font-size: 11px; color: #64748b; }
+    .stat-num { font-size: 13px; font-weight: 700; margin-top: 2px; }
+    .foot { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #64748b; border-top: 1px solid #f1f5f9; padding-top: 8px; margin-bottom: 8px; }
+    .copy-btn { width: 100%; padding: 9px; border-radius: 8px; border: none; background: #e2e8f0; color: #1e293b; font-size: 12px; font-weight: 700; cursor: pointer; }
+    .empty { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; text-align: center; font-size: 13px; color: #64748b; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>海外サッカー 今夜の自動予想</h1>
+    <p id="meta-info">データを読み込み中...</p>
+  </header>
+
+  <main>
+    <div class="filters">
+      <button type="button" data-min="0" class="filter-btn active">すべて</button>
+      <button type="button" data-min="3" class="filter-btn">★3以上</button>
+      <button type="button" data-min="4" class="filter-btn">★4以上</button>
+    </div>
+    <div id="match-list"></div>
+  </main>
+
+  <script>
+    let allMatches = [];
+    let minStars = 0;
+
+    function buildCopyText(m) {
+      const stars = "★".repeat(m.preliminary_stars) + "☆".repeat(5 - m.preliminary_stars);
+      const est = m.metrics_at_est || {};
+      const lines = [
+        `■ ${m.home} vs ${m.away}（${m.league} / ${m.kickoff_jst} JST）`,
+        `・本命（出し）: ${m.favorite_team}（${m.favorite_side}）`,
+        `・評価: ${stars}（${m.preliminary_type}）`,
+        `・推定ハンデ: ${m.estimated_handicap}`,
+        `・勝率(除去後): ${m.fair_prob_pct.fav}% / 貰い確率: ${est.get_pct}% / 推定期待値: ${est.ev_pct >= 0 ? "+" : ""}${est.ev_pct}%`,
+        `・オッズ幅: ${m.fav_odds_range}（${m.bookmaker_count}社）`
+      ];
+      if (m.blowout_auto) lines.push(`・大勝チェック仮判定: ${m.blowout_auto}`);
+      if (m.alerts && m.alerts.length) lines.push(`・注意要素: ${m.alerts.join(" / ")}`);
+      return lines.join("\n");
+    }
+
+    function copyCard(idx, btn) {
+      const filtered = allMatches.filter(m => (m.preliminary_stars || 0) >= minStars);
+      const text = buildCopyText(filtered[idx]);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          btn.textContent = "コピーしました";
+          setTimeout(() => { btn.textContent = "この試合の要素をコピー（表なし）"; }, 1800);
+        });
+      }
+    }
+
+    function render() {
+      const list = document.getElementById("match-list");
+      const filtered = allMatches.filter(m => (m.preliminary_stars || 0) >= minStars);
+      if (filtered.length === 0) {
+        list.innerHTML = '<div class="empty">対象の試合はありません（毎日6:00・18:00に自動更新されます）。</div>';
+        return;
+      }
+      list.innerHTML = filtered.map((m, idx) => {
+        const stars = "★".repeat(m.preliminary_stars) + "☆".repeat(5 - m.preliminary_stars);
+        const est = m.metrics_at_est || {};
+        const ev = Number(est.ev_pct || 0);
+        const evColor = ev >= 0 ? "#059669" : "#334155";
+        const alertsHtml = (m.alerts && m.alerts.length)
+          ? `<div class="alerts">${m.alerts.map(a => `<span class="alert-tag">${a}</span>`).join("")}</div>`
+          : "";
+        return `
+          <article class="card">
+            <div class="row-top">
+              <span class="badge">${m.league}</span>
+              <span class="time">${m.kickoff_jst} JST</span>
+            </div>
+            <div class="teams">${m.home} vs ${m.away}</div>
+            <div class="fav">本命（出し）: <strong>${m.favorite_team}</strong>（${m.favorite_side}）</div>
+            ${alertsHtml}
+            <div class="mid-box">
+              <div>
+                <div class="est-label">推定ハンデ</div>
+                <div class="est-val">${m.estimated_handicap}</div>
+              </div>
+              <div>
+                <div class="stars">${stars}</div>
+                <div class="type">${m.preliminary_type}</div>
+              </div>
+            </div>
+            <div class="stats">
+              <div class="stat-box">
+                <div class="stat-label">勝率(除去後)</div>
+                <div class="stat-num">${m.fair_prob_pct.fav}%</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-label">貰い確率</div>
+                <div class="stat-num" style="color:#2563eb;">${est.get_pct}%</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-label">推定期待値</div>
+                <div class="stat-num" style="color:${evColor};">${ev >= 0 ? "+" : ""}${ev}%</div>
+              </div>
+            </div>
+            <div class="foot">
+              <span>本命オッズ幅: ${m.fav_odds_range}（${m.bookmaker_count}社）</span>
+              <span>${m.blowout_auto ? "大勝: " + m.blowout_auto : ""}</span>
+            </div>
+            <button type="button" class="copy-btn" onclick="copyCard(${idx}, this)">この試合の要素をコピー（表なし）</button>
+          </article>
+        `;
+      }).join("");
+    }
+
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        minStars = Number(btn.dataset.min);
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        render();
+      });
+    });
+
+    fetch("./data/predictions.json?t=" + Date.now())
+      .then(r => r.json())
+      .then(data => {
+        allMatches = data.matches || [];
+        document.getElementById("meta-info").textContent =
+          `更新: ${data.generated_at_jst} / 対象: ${data.match_count}試合`;
+        render();
+      })
+      .catch(() => {
+        document.getElementById("meta-info").textContent = "データの読み込みに失敗しました";
+      });
+  </script>
+</body>
+</html>
