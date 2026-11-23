@@ -1,0 +1,106 @@
+{
+  "generated_at_jst": "2026-11-23 20:00:52",
+  "window_jst": "2026-11-23 19:00 〜 2026-11-24 09:00",
+  "match_count": 3,
+  "matches": [
+    {
+      "id": "99776445d5a5f4ed008f9a6d6a1495b7",
+      "league": "セリエA",
+      "kickoff_jst": "2026-11-24 04:45",
+      "home": "Monza [18位 得点17/失点25]",
+      "away": "Fiorentina [15位 得点17/失点25]",
+      "favorite_side": "AWAY",
+      "favorite_team": "Fiorentina",
+      "odds_avg": {
+        "fav": 1.92,
+        "draw": 3.76,
+        "dog": 3.63
+      },
+      "fav_odds_range": "1.78〜2.02",
+      "fair_prob_pct": {
+        "fav": 49.0,
+        "draw": 25.0,
+        "dog": 26.0
+      },
+      "estimated_handicap": "0/8",
+      "metrics_at_est": {
+        "full_win_pct": 49.0,
+        "get_pct": 49.0,
+        "ev_pct": 0.5
+      },
+      "preliminary_type": "参考（ハンデ確認要）",
+      "preliminary_stars": 2,
+      "alerts": [
+        "業者間オッズ差大"
+      ],
+      "blowout_auto": "1/4項目(休養差除く)",
+      "bookmaker_count": 42
+    },
+    {
+      "id": "aa77e2a08a1a003b0bbb62a5f8e8ae42",
+      "league": "プレミアリーグ",
+      "kickoff_jst": "2026-11-24 05:00",
+      "home": "Brentford [10位 得点16/失点11]",
+      "away": "Everton [7位 得点12/失点10]",
+      "favorite_side": "HOME",
+      "favorite_team": "Brentford",
+      "odds_avg": {
+        "fav": 2.24,
+        "draw": 3.47,
+        "dog": 3.11
+      },
+      "fav_odds_range": "2.05〜2.36",
+      "fair_prob_pct": {
+        "fav": 42.3,
+        "draw": 27.3,
+        "dog": 30.4
+      },
+      "estimated_handicap": "0/3",
+      "metrics_at_est": {
+        "full_win_pct": 42.3,
+        "get_pct": 42.3,
+        "ev_pct": 1.6
+      },
+      "preliminary_type": "参考（ハンデ確認要）",
+      "preliminary_stars": 2,
+      "alerts": [
+        "業者間オッズ差大"
+      ],
+      "blowout_auto": "0/4項目(休養差除く)",
+      "bookmaker_count": 43
+    },
+    {
+      "id": "afae1c9d986e4ab2200dc9bd44b6b6c4",
+      "league": "ラ・リーガ",
+      "kickoff_jst": "2026-11-24 05:00",
+      "home": "Levante [18位 得点16/失点21]",
+      "away": "Elche CF [19位 得点14/失点20]",
+      "favorite_side": "HOME",
+      "favorite_team": "Levante",
+      "odds_avg": {
+        "fav": 2.13,
+        "draw": 3.57,
+        "dog": 3.19
+      },
+      "fav_odds_range": "2.00〜2.26",
+      "fair_prob_pct": {
+        "fav": 44.1,
+        "draw": 26.4,
+        "dog": 29.5
+      },
+      "estimated_handicap": "0/5",
+      "metrics_at_est": {
+        "full_win_pct": 44.1,
+        "get_pct": 44.1,
+        "ev_pct": -0.8
+      },
+      "preliminary_type": "参考（ハンデ確認要）",
+      "preliminary_stars": 2,
+      "alerts": [
+        "業者間オッズ差大"
+      ],
+      "blowout_auto": "1/4項目(休養差除く)",
+      "bookmaker_count": 38
+    }
+  ]
+}
