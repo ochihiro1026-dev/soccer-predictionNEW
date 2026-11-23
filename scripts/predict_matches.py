@@ -2,6 +2,7 @@ import json
 import math
 import os
 import re
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -172,6 +173,41 @@ def fetch_standings(fd_key: str, comp_code: str) -> dict:
         return {}
 
 
+def fetch_recent_forms(fd_key: str, comp_code: str) -> dict:
+    if not fd_key or not comp_code:
+        return {}
+    url = f"https://api.football-data.org/v4/competitions/{comp_code}/matches?status=FINISHED"
+    req = urllib.request.Request(url, headers={"X-Auth-Token": fd_key})
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        matches = sorted(data.get("matches", []), key=lambda m: m.get("utcDate", ""))
+        history = {}
+        for m in matches:
+            ft = m.get("score", {}).get("fullTime", {})
+            hg, ag = ft.get("home"), ft.get("away")
+            if hg is None or ag is None:
+                continue
+            ht = m.get("homeTeam", {})
+            at = m.get("awayTeam", {})
+            h_key = norm_name(ht.get("shortName") or ht.get("name", ""))
+            a_key = norm_name(at.get("shortName") or at.get("name", ""))
+            if hg > ag:
+                h_res, a_res = "勝", "負"
+            elif hg < ag:
+                h_res, a_res = "負", "勝"
+            else:
+                h_res, a_res = "分", "分"
+            if h_key:
+                history.setdefault(h_key, []).append(h_res)
+            if a_key:
+                history.setdefault(a_key, []).append(a_res)
+        return {k: "".join(v[-5:]) for k, v in history.items()}
+    except Exception as e:
+        print(f"[WARN] recent_forms {comp_code}: {e}")
+        return {}
+
+
 def find_team_stat(standings: dict, team_name: str):
     key = norm_name(team_name)
     if key in standings:
@@ -182,12 +218,23 @@ def find_team_stat(standings: dict, team_name: str):
     return None
 
 
-def format_team_label(name: str, stat) -> str:
+def find_team_form(forms: dict, team_name: str) -> str:
+    key = norm_name(team_name)
+    if key in forms:
+        return forms[key]
+    for k, v in forms.items():
+        if k in key or key in k:
+            return v
+    return ""
+
+
+def format_team_label(name: str, stat, form_str: str) -> str:
     if not stat or not stat.get("pos"):
-        return name
+        return f"{name} [直近:{form_str}]" if form_str else name
     parts = [f"{stat['pos']}位", f"得点{stat['gf']}/失点{stat['ga']}"]
-    if stat.get("form"):
-        parts.append(f"直近:{stat['form']}")
+    f_val = form_str or stat.get("form", "")
+    if f_val:
+        parts.append(f"直近:{f_val}")
     return f"{name} [{' '.join(parts)}]"
 
 
@@ -210,7 +257,7 @@ def fetch_league_odds(api_key: str, sport_key: str, from_iso: str, to_iso: str) 
         return []
 
 
-def analyze_event(ev: dict, league_name: str, standings: dict):
+def analyze_event(ev: dict, league_name: str, standings: dict, forms: dict):
     home = ev.get("home_team", "")
     away = ev.get("away_team", "")
     bookmakers = ev.get("bookmakers", [])
@@ -282,8 +329,10 @@ def analyze_event(ev: dict, league_name: str, standings: dict):
 
     h_stat = find_team_stat(standings, home)
     a_stat = find_team_stat(standings, away)
-    home_label = format_team_label(home, h_stat)
-    away_label = format_team_label(away, a_stat)
+    h_form = find_team_form(forms, home)
+    a_form = find_team_form(forms, away)
+    home_label = format_team_label(home, h_stat, h_form)
+    away_label = format_team_label(away, a_stat, a_form)
 
     blowout_score = None
     if h_stat and a_stat:
@@ -388,9 +437,14 @@ def main():
     results = []
     for sport_key, league_name, fd_code in TARGET_LEAGUES:
         events = fetch_league_odds(api_key, sport_key, from_iso, to_iso)
-        standings = fetch_standings(fd_key, fd_code) if (events and fd_key and fd_code) else {}
+        standings = {}
+        forms = {}
+        if events and fd_key and fd_code:
+            standings = fetch_standings(fd_key, fd_code)
+            forms = fetch_recent_forms(fd_key, fd_code)
+            time.sleep(1.5)
         for ev in events:
-            parsed = analyze_event(ev, league_name, standings)
+            parsed = analyze_event(ev, league_name, standings, forms)
             if parsed:
                 results.append(parsed)
 
