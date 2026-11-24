@@ -1,41 +1,8 @@
 {
-  "generated_at_jst": "2026-11-24 06:41:16",
+  "generated_at_jst": "2026-11-24 18:55:09",
   "window_jst": "2026-11-24 19:00 〜 2026-11-25 09:00",
   "match_count": 9,
   "matches": [
-    {
-      "id": "3fb5e4a792cf34a0459efcb79a11a785",
-      "league": "CL",
-      "kickoff_jst": "2026-11-25 05:00",
-      "home": "Real Madrid [2位 得点13/失点7 直近:勝勝勝勝]",
-      "away": "PSV Eindhoven [24位 得点3/失点4 直近:分負勝負]",
-      "favorite_side": "HOME",
-      "favorite_team": "Real Madrid",
-      "odds_avg": {
-        "fav": 1.16,
-        "draw": 8.72,
-        "dog": 12.48
-      },
-      "fav_odds_range": "1.10〜1.21",
-      "fair_prob_pct": {
-        "fav": 81.5,
-        "draw": 10.9,
-        "dog": 7.6
-      },
-      "estimated_handicap": "1半7",
-      "metrics_at_est": {
-        "full_win_pct": 37.7,
-        "get_pct": 60.4,
-        "ev_pct": 2.6
-      },
-      "preliminary_type": "確信型候補",
-      "preliminary_stars": 4,
-      "alerts": [
-        "CL: 本命優位傾向"
-      ],
-      "blowout_auto": "2/4項目(休養差除く)",
-      "bookmaker_count": 40
-    },
     {
       "id": "e422af92d1fc06c0a330838c1c2f2e08",
       "league": "CL",
@@ -45,21 +12,21 @@
       "favorite_side": "AWAY",
       "favorite_team": "Aston Villa",
       "odds_avg": {
-        "fav": 2.2,
-        "draw": 3.9,
-        "dog": 2.87
+        "fav": 2.19,
+        "draw": 3.78,
+        "dog": 2.98
       },
-      "fav_odds_range": "2.00〜2.32",
+      "fav_odds_range": "2.00〜2.30",
       "fair_prob_pct": {
-        "fav": 42.9,
-        "draw": 24.2,
-        "dog": 32.9
+        "fav": 43.2,
+        "draw": 25.0,
+        "dog": 31.8
       },
       "estimated_handicap": "0/3",
       "metrics_at_est": {
-        "full_win_pct": 42.9,
-        "get_pct": 42.9,
-        "ev_pct": 0.5
+        "full_win_pct": 43.2,
+        "get_pct": 43.2,
+        "ev_pct": 1.7
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
@@ -79,21 +46,21 @@
       "favorite_side": "HOME",
       "favorite_team": "Bodø/Glimt",
       "odds_avg": {
-        "fav": 1.48,
-        "draw": 5.01,
-        "dog": 5.35
+        "fav": 1.44,
+        "draw": 5.23,
+        "dog": 5.68
       },
-      "fav_odds_range": "1.40〜1.53",
+      "fav_odds_range": "1.35〜1.50",
       "fair_prob_pct": {
-        "fav": 63.6,
-        "draw": 18.8,
-        "dog": 17.6
+        "fav": 65.4,
+        "draw": 18.0,
+        "dog": 16.6
       },
-      "estimated_handicap": "1.0",
+      "estimated_handicap": "1.2",
       "metrics_at_est": {
-        "full_win_pct": 40.5,
-        "get_pct": 40.5,
-        "ev_pct": 2.0
+        "full_win_pct": 41.6,
+        "get_pct": 41.6,
+        "ev_pct": 0.1
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
@@ -113,20 +80,20 @@
       "favorite_team": "Como",
       "odds_avg": {
         "fav": 1.25,
-        "draw": 6.36,
-        "dog": 9.75
+        "draw": 6.52,
+        "dog": 9.85
       },
-      "fav_odds_range": "1.17〜1.30",
+      "fav_odds_range": "1.16〜1.30",
       "fair_prob_pct": {
-        "fav": 75.5,
-        "draw": 14.8,
-        "dog": 9.7
+        "fav": 75.9,
+        "draw": 14.5,
+        "dog": 9.6
       },
       "estimated_handicap": "1半",
       "metrics_at_est": {
-        "full_win_pct": 53.3,
-        "get_pct": 53.3,
-        "ev_pct": 4.0
+        "full_win_pct": 53.6,
+        "get_pct": 53.6,
+        "ev_pct": 4.6
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
@@ -145,27 +112,26 @@
       "favorite_side": "HOME",
       "favorite_team": "Arsenal",
       "odds_avg": {
-        "fav": 1.39,
-        "draw": 4.86,
-        "dog": 7.34
+        "fav": 1.43,
+        "draw": 4.62,
+        "dog": 6.85
       },
-      "fav_odds_range": "1.28〜1.45",
+      "fav_odds_range": "1.34〜1.49",
       "fair_prob_pct": {
-        "fav": 67.7,
-        "draw": 19.4,
-        "dog": 12.9
+        "fav": 65.8,
+        "draw": 20.4,
+        "dog": 13.8
       },
-      "estimated_handicap": "1.5",
+      "estimated_handicap": "1.3",
       "metrics_at_est": {
-        "full_win_pct": 44.3,
-        "get_pct": 44.3,
-        "ev_pct": -1.9
+        "full_win_pct": 43.1,
+        "get_pct": 43.1,
+        "ev_pct": -0.1
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [
-        "CL: 本命優位傾向",
-        "業者間オッズ差大"
+        "CL: 本命優位傾向"
       ],
       "blowout_auto": "2/4項目(休養差除く)",
       "bookmaker_count": 40
@@ -179,21 +145,21 @@
       "favorite_side": "AWAY",
       "favorite_team": "Porto",
       "odds_avg": {
-        "fav": 2.29,
-        "draw": 3.65,
-        "dog": 2.87
+        "fav": 2.17,
+        "draw": 3.64,
+        "dog": 3.11
       },
-      "fav_odds_range": "2.10〜2.44",
+      "fav_odds_range": "2.00〜2.27",
       "fair_prob_pct": {
-        "fav": 41.3,
-        "draw": 25.9,
-        "dog": 32.8
+        "fav": 43.6,
+        "draw": 26.0,
+        "dog": 30.4
       },
-      "estimated_handicap": "0/3",
+      "estimated_handicap": "0/5",
       "metrics_at_est": {
-        "full_win_pct": 41.3,
-        "get_pct": 41.3,
-        "ev_pct": -1.4
+        "full_win_pct": 43.6,
+        "get_pct": 43.6,
+        "ev_pct": -1.9
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
@@ -213,29 +179,61 @@
       "favorite_side": "HOME",
       "favorite_team": "Manchester City",
       "odds_avg": {
-        "fav": 1.27,
-        "draw": 6.25,
-        "dog": 9.05
+        "fav": 1.28,
+        "draw": 6.21,
+        "dog": 8.53
       },
-      "fav_odds_range": "1.12〜1.32",
+      "fav_odds_range": "1.19〜1.33",
       "fair_prob_pct": {
-        "fav": 74.5,
-        "draw": 15.1,
-        "dog": 10.4
+        "fav": 73.7,
+        "draw": 15.2,
+        "dog": 11.1
       },
       "estimated_handicap": "1半",
       "metrics_at_est": {
-        "full_win_pct": 51.3,
-        "get_pct": 51.3,
-        "ev_pct": 0.1
+        "full_win_pct": 50.8,
+        "get_pct": 50.8,
+        "ev_pct": -0.9
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [
-        "CL: 本命優位傾向",
-        "業者間オッズ差大"
+        "CL: 本命優位傾向"
       ],
       "blowout_auto": null,
+      "bookmaker_count": 40
+    },
+    {
+      "id": "3fb5e4a792cf34a0459efcb79a11a785",
+      "league": "CL",
+      "kickoff_jst": "2026-11-25 05:00",
+      "home": "Real Madrid [2位 得点13/失点7 直近:勝勝勝勝]",
+      "away": "PSV Eindhoven [24位 得点3/失点4 直近:分負勝負]",
+      "favorite_side": "HOME",
+      "favorite_team": "Real Madrid",
+      "odds_avg": {
+        "fav": 1.13,
+        "draw": 9.67,
+        "dog": 14.96
+      },
+      "fav_odds_range": "1.08〜1.19",
+      "fair_prob_pct": {
+        "fav": 83.8,
+        "draw": 9.8,
+        "dog": 6.3
+      },
+      "estimated_handicap": "2.4",
+      "metrics_at_est": {
+        "full_win_pct": 42.5,
+        "get_pct": 42.5,
+        "ev_pct": -3.7
+      },
+      "preliminary_type": "参考（ハンデ確認要）",
+      "preliminary_stars": 2,
+      "alerts": [
+        "CL: 本命優位傾向"
+      ],
+      "blowout_auto": "2/4項目(休養差除く)",
       "bookmaker_count": 40
     },
     {
@@ -247,27 +245,26 @@
       "favorite_side": "HOME",
       "favorite_team": "RB Leipzig",
       "odds_avg": {
-        "fav": 1.38,
-        "draw": 5.56,
-        "dog": 6.57
+        "fav": 1.36,
+        "draw": 5.64,
+        "dog": 7.03
       },
-      "fav_odds_range": "1.29〜1.46",
+      "fav_odds_range": "1.27〜1.40",
       "fair_prob_pct": {
-        "fav": 68.6,
-        "draw": 17.0,
-        "dog": 14.4
+        "fav": 69.8,
+        "draw": 16.8,
+        "dog": 13.5
       },
-      "estimated_handicap": "1.5",
+      "estimated_handicap": "1.7",
       "metrics_at_est": {
-        "full_win_pct": 44.9,
-        "get_pct": 44.9,
-        "ev_pct": -0.6
+        "full_win_pct": 46.9,
+        "get_pct": 46.9,
+        "ev_pct": -1.7
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [
-        "CL: 本命優位傾向",
-        "業者間オッズ差大"
+        "CL: 本命優位傾向"
       ],
       "blowout_auto": "2/4項目(休養差除く)",
       "bookmaker_count": 40
@@ -281,27 +278,26 @@
       "favorite_side": "AWAY",
       "favorite_team": "Real Betis",
       "odds_avg": {
-        "fav": 1.24,
-        "draw": 6.5,
-        "dog": 10.16
+        "fav": 1.25,
+        "draw": 6.35,
+        "dog": 9.98
       },
-      "fav_odds_range": "1.15〜1.30",
+      "fav_odds_range": "1.17〜1.30",
       "fair_prob_pct": {
-        "fav": 76.1,
-        "draw": 14.6,
-        "dog": 9.3
+        "fav": 75.7,
+        "draw": 14.9,
+        "dog": 9.5
       },
       "estimated_handicap": "1半",
       "metrics_at_est": {
-        "full_win_pct": 53.8,
-        "get_pct": 53.8,
-        "ev_pct": 4.9
+        "full_win_pct": 53.5,
+        "get_pct": 53.5,
+        "ev_pct": 4.3
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [
-        "CL: 本命優位傾向",
-        "業者間オッズ差大"
+        "CL: 本命優位傾向"
       ],
       "blowout_auto": null,
       "bookmaker_count": 40
