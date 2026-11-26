@@ -257,6 +257,46 @@ def fetch_league_odds(api_key: str, sport_key: str, from_iso: str, to_iso: str) 
         return []
 
 
+def generate_ai_analysis(gemini_key: str, match: dict) -> str:
+    if not gemini_key:
+        return ""
+    prompt = f"""あなたは海外サッカーの予想アナリストです。以下の試合についてGoogle検索で最新のチーム情報（怪我人・出場停止・復帰・監督交代・ミッドウィーク日程・過密日程）を確認し、13項目の予想ルールに沿って日本語で簡潔に分析してください。
+
+【試合データ】
+・大会 / 日時: {match['league']} / {match['kickoff_jst']} JST
+・対戦: {match['home']} vs {match['away']}
+・本命（出し）: {match['favorite_team']}（{match['favorite_side']}）
+・勝率(上乗せ除去後): {match['fair_prob_pct']['fav']}% / 推定ハンデ: {match['estimated_handicap']} / 期待値: {match['metrics_at_est']['ev_pct']:+.1f}%
+・オッズ幅: {match['fav_odds_range']}
+・注意タグ: {', '.join(match['alerts']) if match['alerts'] else 'なし'}
+
+【出力ルール（表は使わず、箇条書きのみ・150〜220文字程度）】
+・欠場/復帰：主力選手の欠場・出場停止・復帰（未確認や1媒体のみの場合はその旨を明記）
+・日程/監督：休養日数やミッドウィーク試合、監督・環境の注意点
+・判定メモ：出し中心の方針・大勝チェック・逆の例外条件に照らした一言（確定情報がない見出しだけの噂は根拠にしない）"""
+
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={gemini_key}"
+    body = json.dumps({
+        "contents": [{"parts": [{"text": prompt}]}],
+        "tools": [{"google_search": {}}],
+    }).encode("utf-8")
+    req = urllib.request.Request(
+        url,
+        data=body,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            res = json.loads(resp.read().decode("utf-8"))
+        parts = res.get("candidates", [{}])[0].get("content", {}).get("parts", [])
+        text = "".join(p.get("text", "") for p in parts).strip()
+        return text
+    except Exception as e:
+        print(f"[WARN] Gemini API error ({match['favorite_team']}): {e}")
+        return ""
+
+
 def analyze_event(ev: dict, league_name: str, standings: dict, forms: dict):
     home = ev.get("home_team", "")
     away = ev.get("away_team", "")
@@ -379,6 +419,7 @@ def analyze_event(ev: dict, league_name: str, standings: dict, forms: dict):
         "preliminary_stars": stars,
         "alerts": alerts,
         "blowout_auto": blowout_score,
+        "ai_analysis": "",
         "bookmaker_count": len(home_odds),
     }
 
@@ -424,6 +465,7 @@ def main():
     if not api_key:
         raise RuntimeError("環境変数 ODDS_API_KEY が設定されていません。")
     fd_key = os.environ.get("FOOTBALL_DATA_KEY", "").strip()
+    gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
     webhook_url = os.environ.get("DISCORD_WEBHOOK_URL", "").strip()
     site_url = os.environ.get("SITE_URL", "").strip()
 
@@ -449,6 +491,11 @@ def main():
                 results.append(parsed)
 
     results.sort(key=lambda x: (-x["preliminary_stars"], x["kickoff_jst"]))
+
+    if gemini_key:
+        for m in results[:5]:
+            m["ai_analysis"] = generate_ai_analysis(gemini_key, m)
+            time.sleep(4.0)
 
     os.makedirs("data", exist_ok=True)
     payload = {
