@@ -31,6 +31,8 @@
     .stat-box { background: #f8fafc; border-radius: 8px; padding: 6px 4px; }
     .stat-label { font-size: 11px; color: #64748b; }
     .stat-num { font-size: 13px; font-weight: 700; margin-top: 2px; }
+    .ai-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; font-size: 12px; color: #14532d; line-height: 1.6; white-space: pre-wrap; }
+    .ai-title { font-weight: 700; margin-bottom: 4px; color: #166534; }
     .foot { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #64748b; border-top: 1px solid #f1f5f9; padding-top: 8px; margin-bottom: 8px; }
     .copy-btn { width: 100%; padding: 9px; border-radius: 8px; border: none; background: #e2e8f0; color: #1e293b; font-size: 12px; font-weight: 700; cursor: pointer; }
     .empty { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; text-align: center; font-size: 13px; color: #64748b; }
@@ -68,6 +70,7 @@
       ];
       if (m.blowout_auto) lines.push(`・大勝チェック仮判定: ${m.blowout_auto}`);
       if (m.alerts && m.alerts.length) lines.push(`・注意要素: ${m.alerts.join(" / ")}`);
+      if (m.ai_analysis) lines.push(m.ai_analysis);
       return lines.join("\n");
     }
 
@@ -96,6 +99,9 @@
         const evColor = ev >= 0 ? "#059669" : "#334155";
         const alertsHtml = (m.alerts && m.alerts.length)
           ? `<div class="alerts">${m.alerts.map(a => `<span class="alert-tag">${a}</span>`).join("")}</div>`
+          : "";
+        const aiHtml = m.ai_analysis
+          ? `<div class="ai-box"><div class="ai-title">AI自動分析（13項目基準）</div>${m.ai_analysis}</div>`
           : "";
         return `
           <article class="card">
@@ -130,6 +136,7 @@
                 <div class="stat-num" style="color:${evColor};">${ev >= 0 ? "+" : ""}${ev}%</div>
               </div>
             </div>
+            ${aiHtml}
             <div class="foot">
               <span>本命オッズ幅: ${m.fav_odds_range}（${m.bookmaker_count}社）</span>
               <span>${m.blowout_auto ? "大勝: " + m.blowout_auto : ""}</span>
