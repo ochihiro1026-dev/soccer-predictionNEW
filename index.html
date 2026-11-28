@@ -11,8 +11,8 @@
     header h1 { font-size: 16px; font-weight: 700; }
     header p { font-size: 12px; color: #cbd5e1; margin-top: 4px; }
     main { max-width: 600px; margin: 0 auto; padding: 14px 16px; }
-    .filters { display: flex; gap: 8px; margin-bottom: 14px; }
-    .filter-btn { flex: 1; padding: 10px; border-radius: 10px; font-size: 13px; font-weight: 700; border: 1px solid #cbd5e1; background: #ffffff; color: #334155; cursor: pointer; }
+    .filters { display: flex; gap: 6px; margin-bottom: 14px; }
+    .filter-btn { flex: 1; padding: 10px 4px; border-radius: 10px; font-size: 12px; font-weight: 700; border: 1px solid #cbd5e1; background: #ffffff; color: #334155; cursor: pointer; }
     .filter-btn.active { background: #0f172a; color: #ffffff; border-color: #0f172a; }
     .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px; margin-bottom: 12px; }
     .row-top { display: flex; justify-content: space-between; align-items: center; font-size: 12px; margin-bottom: 8px; }
@@ -22,6 +22,7 @@
     .fav { font-size: 12px; color: #475569; margin-bottom: 8px; }
     .alerts { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
     .alert-tag { background: #fef3c7; color: #92400e; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; }
+    .back-tag { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; font-size: 11px; font-weight: 700; padding: 4px 9px; border-radius: 6px; }
     .mid-box { display: flex; justify-content: space-between; align-items: center; background: #f1f5f9; border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; }
     .est-label { font-size: 11px; color: #64748b; }
     .est-val { font-size: 17px; font-weight: 700; }
@@ -50,22 +51,30 @@
 
   <main>
     <div class="filters">
-      <button type="button" data-min="0" class="filter-btn active">すべて</button>
-      <button type="button" data-min="3" class="filter-btn">★3以上</button>
-      <button type="button" data-min="4" class="filter-btn">★4以上</button>
+      <button type="button" data-filter="all" class="filter-btn active">すべて</button>
+      <button type="button" data-filter="star3" class="filter-btn">★3以上</button>
+      <button type="button" data-filter="star4" class="filter-btn">★4以上</button>
+      <button type="button" data-filter="back" class="filter-btn">逆候補</button>
     </div>
     <div id="match-list"></div>
   </main>
 
   <script>
     let allMatches = [];
-    let minStars = 0;
+    let activeFilter = "all";
 
     function escHtml(str) {
       return String(str || "")
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;");
+    }
+
+    function getFiltered() {
+      if (activeFilter === "star3") return allMatches.filter(m => (m.preliminary_stars || 0) >= 3);
+      if (activeFilter === "star4") return allMatches.filter(m => (m.preliminary_stars || 0) >= 4);
+      if (activeFilter === "back") return allMatches.filter(m => Boolean(m.back_candidate));
+      return allMatches;
     }
 
     function buildCopyText(m) {
@@ -79,6 +88,7 @@
         `・勝率(除去後): ${m.fair_prob_pct.fav}% / 貰い確率: ${est.get_pct}% / 推定期待値: ${est.ev_pct >= 0 ? "+" : ""}${est.ev_pct}%`,
         `・オッズ幅: ${m.fav_odds_range}（${m.bookmaker_count}社）`
       ];
+      if (m.back_candidate) lines.push("・逆（バック）検討候補: 本命に不安材料＋格下に得点力あり（実際のハンデが推定より2段階以上重ければ検討）");
       if (m.blowout_auto) lines.push(`・大勝チェック仮判定: ${m.blowout_auto}`);
       if (m.alerts && m.alerts.length) lines.push(`・注意要素: ${m.alerts.join(" / ")}`);
       if (m.ai_analysis) lines.push("", m.ai_analysis);
@@ -86,7 +96,7 @@
     }
 
     function copyCard(idx, btn) {
-      const filtered = allMatches.filter(m => (m.preliminary_stars || 0) >= minStars);
+      const filtered = getFiltered();
       const text = buildCopyText(filtered[idx]);
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => {
@@ -98,9 +108,9 @@
 
     function render() {
       const list = document.getElementById("match-list");
-      const filtered = allMatches.filter(m => (m.preliminary_stars || 0) >= minStars);
+      const filtered = getFiltered();
       if (filtered.length === 0) {
-        list.innerHTML = '<div class="empty">対象の試合はありません（毎日6:00・18:00に自動更新されます）。</div>';
+        list.innerHTML = '<div class="empty">該当する試合はありません（毎日6:00・18:00に自動更新されます）。</div>';
         return;
       }
       list.innerHTML = filtered.map((m, idx) => {
@@ -108,9 +118,14 @@
         const est = m.metrics_at_est || {};
         const ev = Number(est.ev_pct || 0);
         const evColor = ev >= 0 ? "#059669" : "#334155";
-        const alertsHtml = (m.alerts && m.alerts.length)
-          ? `<div class="alerts">${m.alerts.map(a => `<span class="alert-tag">${escHtml(a)}</span>`).join("")}</div>`
-          : "";
+        const tags = [];
+        if (m.back_candidate) {
+          tags.push('<span class="back-tag">逆（バック）検討候補（実ハンデが2段階以上重ければ推奨）</span>');
+        }
+        if (m.alerts && m.alerts.length) {
+          m.alerts.forEach(a => tags.push(`<span class="alert-tag">${escHtml(a)}</span>`));
+        }
+        const alertsHtml = tags.length ? `<div class="alerts">${tags.join("")}</div>` : "";
         const aiHtml = m.ai_analysis
           ? `<details class="ai-accordion">
                <summary>AI詳細レポート（欠場・日程・戦術・13項目判定）</summary>
@@ -163,7 +178,7 @@
 
     document.querySelectorAll(".filter-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        minStars = Number(btn.dataset.min);
+        activeFilter = btn.dataset.filter;
         document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
         render();
