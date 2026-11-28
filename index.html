@@ -31,8 +31,12 @@
     .stat-box { background: #f8fafc; border-radius: 8px; padding: 6px 4px; }
     .stat-label { font-size: 11px; color: #64748b; }
     .stat-num { font-size: 13px; font-weight: 700; margin-top: 2px; }
-    .ai-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; font-size: 12px; color: #14532d; line-height: 1.6; white-space: pre-wrap; }
-    .ai-title { font-weight: 700; margin-bottom: 4px; color: #166534; }
+    details.ai-accordion { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+    details.ai-accordion summary { list-style: none; padding: 10px 12px; font-size: 12px; font-weight: 700; color: #166534; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    details.ai-accordion summary::-webkit-details-marker { display: none; }
+    details.ai-accordion summary::after { content: "▼ 開く"; font-size: 11px; color: #15803d; }
+    details.ai-accordion[open] summary::after { content: "▲ 閉じる"; }
+    .ai-content { padding: 0 12px 12px 12px; font-size: 12.5px; color: #14532d; line-height: 1.7; white-space: pre-wrap; border-top: 1px solid #dcfce7; padding-top: 10px; }
     .foot { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #64748b; border-top: 1px solid #f1f5f9; padding-top: 8px; margin-bottom: 8px; }
     .copy-btn { width: 100%; padding: 9px; border-radius: 8px; border: none; background: #e2e8f0; color: #1e293b; font-size: 12px; font-weight: 700; cursor: pointer; }
     .empty { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; text-align: center; font-size: 13px; color: #64748b; }
@@ -57,6 +61,13 @@
     let allMatches = [];
     let minStars = 0;
 
+    function escHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
     function buildCopyText(m) {
       const stars = "★".repeat(m.preliminary_stars) + "☆".repeat(5 - m.preliminary_stars);
       const est = m.metrics_at_est || {};
@@ -70,7 +81,7 @@
       ];
       if (m.blowout_auto) lines.push(`・大勝チェック仮判定: ${m.blowout_auto}`);
       if (m.alerts && m.alerts.length) lines.push(`・注意要素: ${m.alerts.join(" / ")}`);
-      if (m.ai_analysis) lines.push(m.ai_analysis);
+      if (m.ai_analysis) lines.push("", m.ai_analysis);
       return lines.join("\n");
     }
 
@@ -80,7 +91,7 @@
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => {
           btn.textContent = "コピーしました";
-          setTimeout(() => { btn.textContent = "この試合の要素をコピー（表なし）"; }, 1800);
+          setTimeout(() => { btn.textContent = "この試合の要素と詳細をコピー（表なし）"; }, 1800);
         });
       }
     }
@@ -98,28 +109,31 @@
         const ev = Number(est.ev_pct || 0);
         const evColor = ev >= 0 ? "#059669" : "#334155";
         const alertsHtml = (m.alerts && m.alerts.length)
-          ? `<div class="alerts">${m.alerts.map(a => `<span class="alert-tag">${a}</span>`).join("")}</div>`
+          ? `<div class="alerts">${m.alerts.map(a => `<span class="alert-tag">${escHtml(a)}</span>`).join("")}</div>`
           : "";
         const aiHtml = m.ai_analysis
-          ? `<div class="ai-box"><div class="ai-title">AI自動分析（13項目基準）</div>${m.ai_analysis}</div>`
+          ? `<details class="ai-accordion">
+               <summary>AI詳細レポート（欠場・日程・戦術・13項目判定）</summary>
+               <div class="ai-content">${escHtml(m.ai_analysis)}</div>
+             </details>`
           : "";
         return `
           <article class="card">
             <div class="row-top">
-              <span class="badge">${m.league}</span>
-              <span class="time">${m.kickoff_jst} JST</span>
+              <span class="badge">${escHtml(m.league)}</span>
+              <span class="time">${escHtml(m.kickoff_jst)} JST</span>
             </div>
-            <div class="teams">${m.home} vs ${m.away}</div>
-            <div class="fav">本命（出し）: <strong>${m.favorite_team}</strong>（${m.favorite_side}）</div>
+            <div class="teams">${escHtml(m.home)} vs ${escHtml(m.away)}</div>
+            <div class="fav">本命（出し）: <strong>${escHtml(m.favorite_team)}</strong>（${escHtml(m.favorite_side)}）</div>
             ${alertsHtml}
             <div class="mid-box">
               <div>
                 <div class="est-label">推定ハンデ</div>
-                <div class="est-val">${m.estimated_handicap}</div>
+                <div class="est-val">${escHtml(m.estimated_handicap)}</div>
               </div>
               <div>
                 <div class="stars">${stars}</div>
-                <div class="type">${m.preliminary_type}</div>
+                <div class="type">${escHtml(m.preliminary_type)}</div>
               </div>
             </div>
             <div class="stats">
@@ -138,10 +152,10 @@
             </div>
             ${aiHtml}
             <div class="foot">
-              <span>本命オッズ幅: ${m.fav_odds_range}（${m.bookmaker_count}社）</span>
-              <span>${m.blowout_auto ? "大勝: " + m.blowout_auto : ""}</span>
+              <span>本命オッズ幅: ${escHtml(m.fav_odds_range)}（${m.bookmaker_count}社）</span>
+              <span>${m.blowout_auto ? "大勝: " + escHtml(m.blowout_auto) : ""}</span>
             </div>
-            <button type="button" class="copy-btn" onclick="copyCard(${idx}, this)">この試合の要素をコピー（表なし）</button>
+            <button type="button" class="copy-btn" onclick="copyCard(${idx}, this)">この試合の要素と詳細をコピー（表なし）</button>
           </article>
         `;
       }).join("");
