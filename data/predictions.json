@@ -1,5 +1,5 @@
 {
-  "generated_at_jst": "2026-11-28 18:40:29",
+  "generated_at_jst": "2026-11-28 21:43:43",
   "window_jst": "2026-11-28 19:00 〜 2026-11-29 09:00",
   "match_count": 20,
   "matches": [
@@ -7,33 +7,33 @@
       "id": "c81520b9a9794749cfdab57f89bdeb16",
       "league": "ラ・リーガ",
       "kickoff_jst": "2026-11-28 22:00",
-      "home": "Real Betis [4位 得点21/失点16 直近:負分勝勝分]",
-      "away": "Rayo Vallecano [16位 得点15/失点22 直近:分負勝負負]",
+      "home": "Real Betis",
+      "away": "Rayo Vallecano",
       "favorite_side": "HOME",
       "favorite_team": "Real Betis",
       "odds_avg": {
-        "fav": 1.58,
-        "draw": 4.23,
-        "dog": 5.14
+        "fav": 1.59,
+        "draw": 4.2,
+        "dog": 4.99
       },
-      "fav_odds_range": "1.48〜1.66",
+      "fav_odds_range": "1.49〜1.68",
       "fair_prob_pct": {
-        "fav": 59.5,
-        "draw": 22.2,
-        "dog": 18.3
+        "fav": 58.9,
+        "draw": 22.3,
+        "dog": 18.8
       },
       "estimated_handicap": "0半7",
       "metrics_at_est": {
-        "full_win_pct": 35.7,
-        "get_pct": 59.5,
-        "ev_pct": 0.1
+        "full_win_pct": 35.4,
+        "get_pct": 58.9,
+        "ev_pct": -0.8
       },
       "preliminary_type": "的中率型候補",
       "preliminary_stars": 3,
       "alerts": [
         "業者間オッズ差大"
       ],
-      "blowout_auto": "1/4項目(休養差除く)",
+      "blowout_auto": null,
       "ai_analysis": "",
       "bookmaker_count": 39
     },
@@ -42,25 +42,25 @@
       "league": "リーグ・アン",
       "kickoff_jst": "2026-11-29 04:45",
       "home": "Paris Saint Germain",
-      "away": "Lorient [10位 得点10/失点9 直近:勝分負勝分]",
+      "away": "Lorient",
       "favorite_side": "HOME",
       "favorite_team": "Paris Saint Germain",
       "odds_avg": {
-        "fav": 1.18,
-        "draw": 7.25,
-        "dog": 13.08
+        "fav": 1.19,
+        "draw": 7.09,
+        "dog": 13.31
       },
-      "fav_odds_range": "1.13〜1.24",
+      "fav_odds_range": "1.13〜1.23",
       "fair_prob_pct": {
-        "fav": 79.7,
-        "draw": 13.0,
-        "dog": 7.2
+        "fav": 79.6,
+        "draw": 13.3,
+        "dog": 7.1
       },
       "estimated_handicap": "1半7",
       "metrics_at_est": {
         "full_win_pct": 36.8,
-        "get_pct": 59.0,
-        "ev_pct": 0.4
+        "get_pct": 58.9,
+        "ev_pct": 0.1
       },
       "preliminary_type": "的中率型候補",
       "preliminary_stars": 3,
@@ -73,65 +73,65 @@
       "id": "af3432ca724da03d38f0ff4e62045e4c",
       "league": "セリエA",
       "kickoff_jst": "2026-11-28 23:00",
-      "home": "Frosinone [7位 得点25/失点20 直近:分勝勝負負]",
-      "away": "Parma [17位 得点10/失点22 直近:負分勝負負]",
+      "home": "Frosinone",
+      "away": "Parma",
       "favorite_side": "HOME",
       "favorite_team": "Frosinone",
       "odds_avg": {
-        "fav": 1.4,
-        "draw": 5.14,
-        "dog": 6.33
+        "fav": 1.42,
+        "draw": 5.05,
+        "dog": 6.14
       },
-      "fav_odds_range": "1.33〜1.47",
+      "fav_odds_range": "1.35〜1.49",
       "fair_prob_pct": {
-        "fav": 66.9,
-        "draw": 18.3,
-        "dog": 14.8
+        "fav": 66.1,
+        "draw": 18.6,
+        "dog": 15.3
       },
       "estimated_handicap": "1.3",
       "metrics_at_est": {
-        "full_win_pct": 43.8,
-        "get_pct": 43.8,
-        "ev_pct": 1.6
+        "full_win_pct": 42.1,
+        "get_pct": 42.1,
+        "ev_pct": -1.1
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [],
-      "blowout_auto": "3/4項目(休養差除く)",
-      "ai_analysis": "",
+      "blowout_auto": null,
+      "ai_analysis": "■1. 欠場・出場停止・復帰\n・フロジノーネ側：前線の主軸に打撲の懸念が一部報道（1媒体のみ）で見られるものの、主力センターバックおよび中盤の要は先発可能とみられ、目立った出場停止選手は未確認。\n・パルマ側：アウェイ戦において守備的MFの出場停止およびサイドバックの負傷離脱（未確認情報を含む）が伝えられており、ディフェンスラインの再編が強いられる状況。\n・ベンチ層の影響：フロジノーネは前線の交代カードで強度の維持が可能だが、パルマは中盤から後ろの層が薄く、試合終盤の守備強度低下が懸念される。\n\n■2. チーム状態・戦術傾向\n・得失点傾向・直近勢い：フロジノーネはホームで安定したボール保持と高いハイプレス成功率を誇り、得点期待値（xG）に見合った堅実な戦績を維持。対するパルマはアウェイでの失点率が高く、直近5試合でも守備の崩れから複数失点を喫する試合が目立つ。\n・戦術の噛み合わせ：フロジノーネが敵陣で主導権を握りサイドから崩す展開に対し、パルマは鋭いロングカウンターを狙う構造。しかしパルマのトランジション守備に緩みがあり、セカンドボールの回収力でフロジノーネが優位に立つ見通し。\n・大勝チェック：本命攻撃（良好）・本命守備（安定）・相手攻撃不足（中立）・相手守備崩れ（懸念あり）・休養差（同等）の観点から、2点差以上の快勝シナリオは十分に視野に入る。\n\n■3. 日程・監督・審判・環境\n・日程・休養：両チームともにミッドウィークの過密日程はなく休養十分。次節に向けた主力の温存リスクも極めて低い。\n・監督・審判・環境：フロジノーネ指揮官の戦術浸透度は高く、パルマ指揮官はアウェイでの守備改善に追われる。主審はファウル判定基準が厳格でカード提示・PK判定がやや多い傾向。天候は良好でピッチ状態も問題なし。\n\n■4. 13項目に基づく判定理由・総評\n・ハンデ・オッズ評価：フロジノーネの勝率66.1%、市場オッズ1.35〜1.49と本命評価は妥当。推定ハンデ1.3に対し、パルマの守備脆弱性を踏まえると「出し」側の全勝ちライン（2点差以上）を十分に狙える地力差が存在。逆の例外3条件（過密日程・主力の大量欠場・著しい過剰人気）には該当しない。\n・最終見解：日本時間23:00（現地午後開催）は番狂わせが比較的起きにくく、実力通りに推移しやすい枠帯。フロジノーネが先制から試合を掌握し、1点差に留まらず追加点を奪っての完勝（2-0または3-1想定）を本線と判定する。",
       "bookmaker_count": 43
     },
     {
       "id": "2c30e2ebaf6c30aaa4e3fb56cffa6a29",
       "league": "ブンデスリーガ",
       "kickoff_jst": "2026-11-28 23:30",
-      "home": "1. FC Köln [14位 得点11/失点15 直近:負分分負分]",
-      "away": "Elversberg [9位 得点17/失点19 直近:勝負勝負負]",
+      "home": "1. FC Köln",
+      "away": "Elversberg",
       "favorite_side": "HOME",
       "favorite_team": "1. FC Köln",
       "odds_avg": {
-        "fav": 1.98,
+        "fav": 1.95,
         "draw": 3.74,
-        "dog": 3.44
+        "dog": 3.51
       },
-      "fav_odds_range": "1.83〜2.08",
+      "fav_odds_range": "1.83〜2.04",
       "fair_prob_pct": {
-        "fav": 47.5,
+        "fav": 48.1,
         "draw": 25.1,
-        "dog": 27.4
+        "dog": 26.8
       },
-      "estimated_handicap": "0/7",
+      "estimated_handicap": "0/8",
       "metrics_at_est": {
-        "full_win_pct": 47.5,
-        "get_pct": 47.5,
-        "ev_pct": 0.2
+        "full_win_pct": 48.1,
+        "get_pct": 48.1,
+        "ev_pct": -1.1
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [
         "業者間オッズ差大"
       ],
-      "blowout_auto": "1/4項目(休養差除く)",
+      "blowout_auto": null,
       "ai_analysis": "",
       "bookmaker_count": 41
     },
@@ -140,25 +140,25 @@
       "league": "ブンデスリーガ",
       "kickoff_jst": "2026-11-28 23:30",
       "home": "Hamburger SV",
-      "away": "Bayern Munich [2位 得点30/失点10 直近:勝勝分勝分]",
+      "away": "Bayern Munich",
       "favorite_side": "AWAY",
       "favorite_team": "Bayern Munich",
       "odds_avg": {
-        "fav": 1.3,
-        "draw": 5.85,
-        "dog": 7.95
+        "fav": 1.31,
+        "draw": 5.68,
+        "dog": 7.86
       },
-      "fav_odds_range": "1.22〜1.36",
+      "fav_odds_range": "1.23〜1.38",
       "fair_prob_pct": {
-        "fav": 72.1,
-        "draw": 16.1,
-        "dog": 11.8
+        "fav": 71.5,
+        "draw": 16.5,
+        "dog": 11.9
       },
-      "estimated_handicap": "1半",
+      "estimated_handicap": "1.7",
       "metrics_at_est": {
-        "full_win_pct": 49.7,
-        "get_pct": 49.7,
-        "ev_pct": -3.0
+        "full_win_pct": 48.1,
+        "get_pct": 48.1,
+        "ev_pct": 0.8
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
@@ -171,33 +171,33 @@
       "id": "f84a9da7eedd0ca11a28a1a7a8edddc7",
       "league": "ブンデスリーガ",
       "kickoff_jst": "2026-11-28 23:30",
-      "home": "SC Paderborn [15位 得点8/失点15 直近:分勝分分負]",
-      "away": "FC Schalke 04 [16位 得点5/失点11 直近:負分負負分]",
+      "home": "SC Paderborn",
+      "away": "FC Schalke 04",
       "favorite_side": "AWAY",
       "favorite_team": "FC Schalke 04",
       "odds_avg": {
         "fav": 2.56,
-        "draw": 3.48,
+        "draw": 3.49,
         "dog": 2.59
       },
-      "fav_odds_range": "2.30〜2.75",
+      "fav_odds_range": "2.25〜2.75",
       "fair_prob_pct": {
-        "fav": 36.7,
-        "draw": 27.0,
+        "fav": 36.8,
+        "draw": 26.9,
         "dog": 36.3
       },
       "estimated_handicap": "0",
       "metrics_at_est": {
-        "full_win_pct": 36.7,
-        "get_pct": 36.7,
-        "ev_pct": -1.4
+        "full_win_pct": 36.8,
+        "get_pct": 36.8,
+        "ev_pct": -1.3
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [
         "業者間オッズ差大"
       ],
-      "blowout_auto": "1/4項目(休養差除く)",
+      "blowout_auto": null,
       "ai_analysis": "",
       "bookmaker_count": 41
     },
@@ -205,31 +205,31 @@
       "id": "365e1a00908ab1cd5a51a53ede2b86b2",
       "league": "ブンデスリーガ",
       "kickoff_jst": "2026-11-28 23:30",
-      "home": "FSV Mainz 05 [13位 得点19/失点22 直近:勝負負負負]",
-      "away": "Union Berlin [17位 得点8/失点26 直近:分分分負負]",
+      "home": "FSV Mainz 05",
+      "away": "Union Berlin",
       "favorite_side": "HOME",
       "favorite_team": "FSV Mainz 05",
       "odds_avg": {
         "fav": 1.46,
-        "draw": 4.7,
+        "draw": 4.69,
         "dog": 6.08
       },
       "fav_odds_range": "1.36〜1.51",
       "fair_prob_pct": {
         "fav": 64.5,
-        "draw": 20.0,
+        "draw": 20.1,
         "dog": 15.5
       },
       "estimated_handicap": "1.2",
       "metrics_at_est": {
         "full_win_pct": 41.1,
         "get_pct": 41.1,
-        "ev_pct": -1.1
+        "ev_pct": -1.2
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [],
-      "blowout_auto": "3/4項目(休養差除く)",
+      "blowout_auto": null,
       "ai_analysis": "",
       "bookmaker_count": 41
     },
@@ -238,25 +238,25 @@
       "league": "プレミアリーグ",
       "kickoff_jst": "2026-11-29 00:00",
       "home": "Manchester United",
-      "away": "Brentford [6位 得点20/失点11 直近:負分勝負勝]",
+      "away": "Brentford [6位 得点20/失点11]",
       "favorite_side": "HOME",
       "favorite_team": "Manchester United",
       "odds_avg": {
-        "fav": 2.28,
-        "draw": 3.72,
-        "dog": 2.86
+        "fav": 2.24,
+        "draw": 3.75,
+        "dog": 2.9
       },
-      "fav_odds_range": "2.05〜2.40",
+      "fav_odds_range": "2.00〜2.38",
       "fair_prob_pct": {
-        "fav": 41.5,
-        "draw": 25.4,
-        "dog": 33.1
+        "fav": 42.2,
+        "draw": 25.2,
+        "dog": 32.6
       },
       "estimated_handicap": "0/3",
       "metrics_at_est": {
-        "full_win_pct": 41.5,
-        "get_pct": 41.5,
-        "ev_pct": -1.2
+        "full_win_pct": 42.2,
+        "get_pct": 42.2,
+        "ev_pct": -0.1
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
@@ -271,26 +271,26 @@
       "id": "0bc17a3c7d8153e72b94688960cc603a",
       "league": "プレミアリーグ",
       "kickoff_jst": "2026-11-29 00:00",
-      "home": "Leeds United [7位 得点14/失点9 直近:分分負勝勝]",
-      "away": "Coventry City [15位 得点13/失点21 直近:負負勝負勝]",
+      "home": "Leeds United [7位 得点14/失点9]",
+      "away": "Coventry City [15位 得点13/失点21]",
       "favorite_side": "HOME",
       "favorite_team": "Leeds United",
       "odds_avg": {
-        "fav": 1.46,
-        "draw": 4.58,
-        "dog": 6.59
+        "fav": 1.47,
+        "draw": 4.46,
+        "dog": 6.49
       },
       "fav_odds_range": "1.37〜1.53",
       "fair_prob_pct": {
-        "fav": 65.0,
-        "draw": 20.7,
-        "dog": 14.4
+        "fav": 64.3,
+        "draw": 21.2,
+        "dog": 14.6
       },
       "estimated_handicap": "1.2",
       "metrics_at_est": {
-        "full_win_pct": 41.4,
-        "get_pct": 41.4,
-        "ev_pct": -0.5
+        "full_win_pct": 40.9,
+        "get_pct": 40.9,
+        "ev_pct": -1.6
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
@@ -305,33 +305,34 @@
       "id": "33d92dabbd2606dfe9d31058f7b20cc8",
       "league": "ラ・リーガ",
       "kickoff_jst": "2026-11-29 00:15",
-      "home": "Málaga [20位 得点9/失点24 直近:負分負負負]",
-      "away": "Athletic Bilbao [8位 得点15/失点12 直近:負勝勝分負]",
+      "home": "Málaga",
+      "away": "Athletic Bilbao",
       "favorite_side": "AWAY",
       "favorite_team": "Athletic Bilbao",
       "odds_avg": {
-        "fav": 1.71,
+        "fav": 1.72,
         "draw": 3.76,
-        "dog": 4.76
+        "dog": 4.64
       },
-      "fav_odds_range": "1.61〜1.77",
+      "fav_odds_range": "1.62〜1.80",
       "fair_prob_pct": {
-        "fav": 55.2,
+        "fav": 54.7,
         "draw": 25.0,
-        "dog": 19.8
+        "dog": 20.3
       },
       "estimated_handicap": "0半3",
       "metrics_at_est": {
-        "full_win_pct": 32.1,
-        "get_pct": 55.2,
-        "ev_pct": 1.1
+        "full_win_pct": 31.8,
+        "get_pct": 54.7,
+        "ev_pct": 0.2
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [
+        "勝率5割前後・引分け全負け注意",
         "業者間オッズ差大"
       ],
-      "blowout_auto": "3/4項目(休養差除く)",
+      "blowout_auto": null,
       "ai_analysis": "",
       "bookmaker_count": 39
     },
@@ -339,24 +340,24 @@
       "id": "24b99950496c624f7124922fc1bda8bd",
       "league": "リーグ・アン",
       "kickoff_jst": "2026-11-29 01:15",
-      "home": "Angers [17位 得点9/失点23 直近:負分負負負]",
-      "away": "RC Lens [11位 得点18/失点16 直近:勝勝負負分]",
+      "home": "Angers",
+      "away": "RC Lens",
       "favorite_side": "AWAY",
       "favorite_team": "RC Lens",
       "odds_avg": {
         "fav": 1.68,
-        "draw": 3.96,
-        "dog": 4.61
+        "draw": 3.95,
+        "dog": 4.64
       },
       "fav_odds_range": "1.57〜1.76",
       "fair_prob_pct": {
         "fav": 56.0,
-        "draw": 23.7,
-        "dog": 20.4
+        "draw": 23.8,
+        "dog": 20.2
       },
       "estimated_handicap": "0半5",
       "metrics_at_est": {
-        "full_win_pct": 32.5,
+        "full_win_pct": 32.6,
         "get_pct": 56.0,
         "ev_pct": -2.0
       },
@@ -365,7 +366,7 @@
       "alerts": [
         "業者間オッズ差大"
       ],
-      "blowout_auto": "2/4項目(休養差除く)",
+      "blowout_auto": null,
       "ai_analysis": "",
       "bookmaker_count": 40
     },
@@ -373,33 +374,33 @@
       "id": "aec86b479e922f437ba228b9a9d74da1",
       "league": "セリエA",
       "kickoff_jst": "2026-11-29 02:00",
-      "home": "Torino [13位 得点15/失点18 直近:勝負負分負]",
-      "away": "Lazio [1位 得点28/失点9 直近:勝勝勝分勝]",
+      "home": "Torino",
+      "away": "Lazio",
       "favorite_side": "AWAY",
       "favorite_team": "Lazio",
       "odds_avg": {
-        "fav": 2.12,
-        "draw": 3.39,
-        "dog": 3.38
+        "fav": 2.07,
+        "draw": 3.43,
+        "dog": 3.47
       },
-      "fav_odds_range": "1.95〜2.26",
+      "fav_odds_range": "1.91〜2.20",
       "fair_prob_pct": {
-        "fav": 44.4,
-        "draw": 27.8,
-        "dog": 27.8
+        "fav": 45.4,
+        "draw": 27.5,
+        "dog": 27.1
       },
       "estimated_handicap": "0/5",
       "metrics_at_est": {
-        "full_win_pct": 44.4,
-        "get_pct": 44.4,
-        "ev_pct": 0.5
+        "full_win_pct": 45.4,
+        "get_pct": 45.4,
+        "ev_pct": 2.2
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [
         "業者間オッズ差大"
       ],
-      "blowout_auto": "2/4項目(休養差除く)",
+      "blowout_auto": null,
       "ai_analysis": "",
       "bookmaker_count": 43
     },
@@ -407,26 +408,26 @@
       "id": "9d23f6ad21946dd258869ebc22236cf0",
       "league": "プレミアリーグ",
       "kickoff_jst": "2026-11-29 02:30",
-      "home": "Ipswich Town [17位 得点15/失点22 直近:負分分負負]",
-      "away": "Aston Villa [12位 得点14/失点17 直近:勝勝分分分]",
+      "home": "Ipswich Town [17位 得点15/失点22]",
+      "away": "Aston Villa [12位 得点14/失点17]",
       "favorite_side": "AWAY",
       "favorite_team": "Aston Villa",
       "odds_avg": {
-        "fav": 2.0,
-        "draw": 3.76,
-        "dog": 3.42
+        "fav": 2.02,
+        "draw": 3.74,
+        "dog": 3.38
       },
-      "fav_odds_range": "1.87〜2.10",
+      "fav_odds_range": "1.87〜2.15",
       "fair_prob_pct": {
-        "fav": 47.3,
-        "draw": 25.1,
-        "dog": 27.6
+        "fav": 46.7,
+        "draw": 25.3,
+        "dog": 28.0
       },
       "estimated_handicap": "0/7",
       "metrics_at_est": {
-        "full_win_pct": 47.3,
-        "get_pct": 47.3,
-        "ev_pct": -0.3
+        "full_win_pct": 46.7,
+        "get_pct": 46.7,
+        "ev_pct": -1.3
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
@@ -441,32 +442,30 @@
       "id": "40236ab976955345ebd1edb72abf6b22",
       "league": "ラ・リーガ",
       "kickoff_jst": "2026-11-29 02:30",
-      "home": "Elche CF [19位 得点15/失点21 直近:分勝負負分]",
+      "home": "Elche CF",
       "away": "Atlético Madrid",
       "favorite_side": "AWAY",
       "favorite_team": "Atlético Madrid",
       "odds_avg": {
-        "fav": 1.46,
-        "draw": 4.6,
-        "dog": 6.2
+        "fav": 1.49,
+        "draw": 4.43,
+        "dog": 6.21
       },
-      "fav_odds_range": "1.36〜1.53",
+      "fav_odds_range": "1.43〜1.54",
       "fair_prob_pct": {
-        "fav": 64.3,
-        "draw": 20.5,
+        "fav": 63.5,
+        "draw": 21.3,
         "dog": 15.2
       },
-      "estimated_handicap": "1.2",
+      "estimated_handicap": "1.0",
       "metrics_at_est": {
-        "full_win_pct": 41.0,
-        "get_pct": 41.0,
-        "ev_pct": -1.4
+        "full_win_pct": 40.4,
+        "get_pct": 40.4,
+        "ev_pct": 1.9
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
-      "alerts": [
-        "業者間オッズ差大"
-      ],
+      "alerts": [],
       "blowout_auto": null,
       "ai_analysis": "",
       "bookmaker_count": 38
@@ -475,14 +474,14 @@
       "id": "5d838190a8f5932d7fcfbcc26bacdd9c",
       "league": "ブンデスリーガ",
       "kickoff_jst": "2026-11-29 02:30",
-      "home": "VfB Stuttgart [8位 得点15/失点15 直近:負負勝勝分]",
-      "away": "Eintracht Frankfurt [7位 得点16/失点20 直近:勝負勝分勝]",
+      "home": "VfB Stuttgart",
+      "away": "Eintracht Frankfurt",
       "favorite_side": "HOME",
       "favorite_team": "VfB Stuttgart",
       "odds_avg": {
         "fav": 1.77,
         "draw": 4.37,
-        "dog": 3.66
+        "dog": 3.67
       },
       "fav_odds_range": "1.65〜1.89",
       "fair_prob_pct": {
@@ -494,7 +493,7 @@
       "metrics_at_est": {
         "full_win_pct": 52.9,
         "get_pct": 52.9,
-        "ev_pct": 3.1
+        "ev_pct": 3.2
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
@@ -502,7 +501,7 @@
         "勝率5割前後・引分け全負け注意",
         "業者間オッズ差大"
       ],
-      "blowout_auto": "1/4項目(休養差除く)",
+      "blowout_auto": null,
       "ai_analysis": "",
       "bookmaker_count": 41
     },
@@ -510,31 +509,31 @@
       "id": "f128c19fa7af43e30dbe3c373e7bc27e",
       "league": "セリエA",
       "kickoff_jst": "2026-11-29 04:45",
-      "home": "Inter Milan [3位 得点32/失点17 直近:勝勝負勝分]",
-      "away": "Genoa [10位 得点13/失点16 直近:勝勝勝負勝]",
+      "home": "Inter Milan",
+      "away": "Genoa",
       "favorite_side": "HOME",
       "favorite_team": "Inter Milan",
       "odds_avg": {
-        "fav": 1.27,
-        "draw": 5.8,
-        "dog": 9.69
+        "fav": 1.28,
+        "draw": 5.74,
+        "dog": 9.66
       },
       "fav_odds_range": "1.20〜1.33",
       "fair_prob_pct": {
-        "fav": 74.0,
-        "draw": 16.3,
-        "dog": 9.7
+        "fav": 73.8,
+        "draw": 16.5,
+        "dog": 9.8
       },
       "estimated_handicap": "1半",
       "metrics_at_est": {
-        "full_win_pct": 51.0,
-        "get_pct": 51.0,
-        "ev_pct": -0.5
+        "full_win_pct": 50.9,
+        "get_pct": 50.9,
+        "ev_pct": -0.8
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [],
-      "blowout_auto": "1/4項目(休養差除く)",
+      "blowout_auto": null,
       "ai_analysis": "",
       "bookmaker_count": 42
     },
@@ -542,33 +541,33 @@
       "id": "f96c1137c9d3f7e2e691275a2988fa1d",
       "league": "リーグ・アン",
       "kickoff_jst": "2026-11-29 04:45",
-      "home": "Le Havre [18位 得点10/失点25 直近:負負負負負]",
-      "away": "Strasbourg [16位 得点18/失点23 直近:負負勝負負]",
+      "home": "Le Havre",
+      "away": "Strasbourg",
       "favorite_side": "AWAY",
       "favorite_team": "Strasbourg",
       "odds_avg": {
-        "fav": 2.18,
-        "draw": 3.48,
-        "dog": 3.12
+        "fav": 2.17,
+        "draw": 3.46,
+        "dog": 3.15
       },
-      "fav_odds_range": "2.00〜2.28",
+      "fav_odds_range": "2.00〜2.30",
       "fair_prob_pct": {
-        "fav": 43.0,
-        "draw": 27.0,
-        "dog": 30.0
+        "fav": 43.1,
+        "draw": 27.1,
+        "dog": 29.7
       },
       "estimated_handicap": "0/5",
       "metrics_at_est": {
-        "full_win_pct": 43.0,
-        "get_pct": 43.0,
-        "ev_pct": -2.6
+        "full_win_pct": 43.1,
+        "get_pct": 43.1,
+        "ev_pct": -2.3
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [
         "業者間オッズ差大"
       ],
-      "blowout_auto": "2/4項目(休養差除く)",
+      "blowout_auto": null,
       "ai_analysis": "",
       "bookmaker_count": 40
     },
@@ -576,33 +575,33 @@
       "id": "aaa86a483888836242da663a46957894",
       "league": "リーグ・アン",
       "kickoff_jst": "2026-11-29 04:45",
-      "home": "Le Mans FC [13位 得点15/失点21 直近:負分負分勝]",
-      "away": "Lille [4位 得点14/失点8 直近:分分勝勝負]",
+      "home": "Le Mans FC",
+      "away": "Lille",
       "favorite_side": "AWAY",
       "favorite_team": "Lille",
       "odds_avg": {
-        "fav": 2.02,
-        "draw": 3.34,
-        "dog": 3.69
+        "fav": 1.94,
+        "draw": 3.47,
+        "dog": 3.84
       },
-      "fav_odds_range": "1.88〜2.12",
+      "fav_odds_range": "1.83〜2.08",
       "fair_prob_pct": {
-        "fav": 46.4,
-        "draw": 28.1,
-        "dog": 25.5
+        "fav": 48.4,
+        "draw": 27.1,
+        "dog": 24.5
       },
-      "estimated_handicap": "0/7",
+      "estimated_handicap": "0/8",
       "metrics_at_est": {
-        "full_win_pct": 46.4,
-        "get_pct": 46.4,
-        "ev_pct": -1.1
+        "full_win_pct": 48.4,
+        "get_pct": 48.4,
+        "ev_pct": -0.1
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [
         "業者間オッズ差大"
       ],
-      "blowout_auto": "2/4項目(休養差除く)",
+      "blowout_auto": null,
       "ai_analysis": "",
       "bookmaker_count": 40
     },
@@ -610,26 +609,26 @@
       "id": "e9a1243fbfbc6f58d0e0522eb07ea9a1",
       "league": "リーグ・アン",
       "kickoff_jst": "2026-11-29 04:45",
-      "home": "Nice [7位 得点17/失点15 直近:負勝勝勝負]",
-      "away": "Troyes [14位 得点10/失点18 直近:負分勝負勝]",
+      "home": "Nice",
+      "away": "Troyes",
       "favorite_side": "HOME",
       "favorite_team": "Nice",
       "odds_avg": {
-        "fav": 1.74,
-        "draw": 3.79,
-        "dog": 4.43
+        "fav": 1.72,
+        "draw": 3.82,
+        "dog": 4.49
       },
-      "fav_odds_range": "1.59〜1.84",
+      "fav_odds_range": "1.58〜1.82",
       "fair_prob_pct": {
-        "fav": 53.9,
-        "draw": 24.8,
-        "dog": 21.2
+        "fav": 54.5,
+        "draw": 24.6,
+        "dog": 20.9
       },
       "estimated_handicap": "0半3",
       "metrics_at_est": {
-        "full_win_pct": 31.4,
-        "get_pct": 53.9,
-        "ev_pct": -1.3
+        "full_win_pct": 31.7,
+        "get_pct": 54.5,
+        "ev_pct": -0.2
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
@@ -637,7 +636,7 @@
         "勝率5割前後・引分け全負け注意",
         "業者間オッズ差大"
       ],
-      "blowout_auto": "2/4項目(休養差除く)",
+      "blowout_auto": null,
       "ai_analysis": "",
       "bookmaker_count": 40
     },
@@ -645,31 +644,31 @@
       "id": "c99772cba1418e72f2eded26e4afeb59",
       "league": "ラ・リーガ",
       "kickoff_jst": "2026-11-29 05:00",
-      "home": "Real Madrid [2位 得点33/失点11 直近:勝勝勝勝勝]",
-      "away": "Alavés [9位 得点18/失点18 直近:負分負分勝]",
+      "home": "Real Madrid",
+      "away": "Alavés",
       "favorite_side": "HOME",
       "favorite_team": "Real Madrid",
       "odds_avg": {
-        "fav": 1.13,
-        "draw": 8.97,
-        "dog": 15.92
+        "fav": 1.14,
+        "draw": 8.73,
+        "dog": 15.13
       },
-      "fav_odds_range": "1.07〜1.18",
+      "fav_odds_range": "1.09〜1.20",
       "fair_prob_pct": {
-        "fav": 83.5,
-        "draw": 10.6,
-        "dog": 5.9
+        "fav": 82.9,
+        "draw": 10.8,
+        "dog": 6.3
       },
       "estimated_handicap": "2.0",
       "metrics_at_est": {
-        "full_win_pct": 40.4,
-        "get_pct": 40.4,
-        "ev_pct": 1.6
+        "full_win_pct": 40.2,
+        "get_pct": 40.2,
+        "ev_pct": 0.9
       },
       "preliminary_type": "参考（ハンデ確認要）",
       "preliminary_stars": 2,
       "alerts": [],
-      "blowout_auto": "2/4項目(休養差除く)",
+      "blowout_auto": null,
       "ai_analysis": "",
       "bookmaker_count": 39
     }
