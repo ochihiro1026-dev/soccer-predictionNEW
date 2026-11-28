@@ -276,11 +276,12 @@ def call_gemini(gemini_key: str, model: str, prompt: str, use_search: bool) -> s
     return "".join(p.get("text", "") for p in parts).strip()
 
 
-def generate_ai_analysis(gemini_key: str, match: dict) -> str:
+def generate_ai_analysis(gemini_key: str, match: dict) -> tuple:
     if not gemini_key:
-        return ""
+        return ("", False)
     alerts_str = ", ".join(match["alerts"]) if match["alerts"] else "なし"
     blowout_str = match.get("blowout_auto") or "未算出"
+    back_ng_str = "該当（" + " / ".join(match.get("back_ng_reasons", [])) + "）" if match.get("back_ng_reasons") else "該当なし"
     prompt = f"""あなたは海外サッカーの予想アナリストです。以下の試合についてGoogle検索で最新のチーム情報・試合前プレビュー・公式発表を調べ、13項目の予想ルールに厳密に沿って詳細な予想レポートを日本語で作成してください。
 
 【試合データ】
@@ -291,6 +292,7 @@ def generate_ai_analysis(gemini_key: str, match: dict) -> str:
 ・推定ハンデ: {match['estimated_handicap']}（全勝ち {match['metrics_at_est']['full_win_pct']}% / 貰い {match['metrics_at_est']['get_pct']}% / 期待値 {match['metrics_at_est']['ev_pct']:+.1f}%）
 ・オッズ幅: {match['fav_odds_range']}（集計{match['bookmaker_count']}社）
 ・大勝チェック仮判定: {blowout_str}
+・逆（バック）NG条件の自動判定: {back_ng_str}
 ・注意タグ: {alerts_str}
 
 【出力フォーマット（表は使わず、以下の4見出し・箇条書きで600〜850文字程度）】
@@ -308,15 +310,21 @@ def generate_ai_analysis(gemini_key: str, match: dict) -> str:
 ・監督交代直後・進退・出場停止の有無、主審のカード・PK傾向、ピッチ・天候
 
 ■4. 13項目に基づく判定理由・総評
-・市場オッズと推定ハンデの評価（出し中心の方針、逆の例外3条件に該当するか）
-・大会/時間帯の傾向（CL/EL、19:00〜20:30開始、勝率5割前後の引分け全負けリスク）を踏まえた最終見解"""
+・市場オッズと推定ハンデの評価（出し中心の方針、逆の例外条件に該当するか）
+・大会/時間帯の傾向（CL/EL、19:00〜20:30開始、勝率5割前後の引分け全負けリスク）を踏まえた最終見解
+
+最後に必ず1行だけ、本命側に確定的な不安材料（主力の大量欠場・出場停止・監督不在など）があり、かつ格下側に得点力・攻撃陣が揃っていて「逆（バック）検討」の余地があるか判定タグを出力してください：
+[BACK_FLAG: YES] または [BACK_FLAG: NO]"""
 
     for model in GEMINI_MODELS:
         for use_search in (True, False):
             try:
-                text = call_gemini(gemini_key, model, prompt, use_search)
-                if text:
-                    return text
+                raw_text = call_gemini(gemini_key, model, prompt, use_search)
+                if raw_text:
+                    m_flag = re.search(r"\[BACK_FLAG:\s*(YES\vert{}NO)\]", raw_text, re.IGNORECASE)
+                    ai_back = bool(m_flag and m_flag.group(1).upper() == "YES")
+                    clean_text = re.sub(r"\n?\[BACK_FLAG:\s*(YES\vert{}NO)\]\s*", "", raw_text, flags=re.IGNORECASE).strip()
+                    return (clean_text, ai_back)
             except urllib.error.HTTPError as e:
                 err_body = e.read().decode("utf-8", errors="ignore")[:180]
                 print(f"[WARN] Gemini {model} (search={use_search}) HTTP {e.code}: {err_body}")
@@ -325,7 +333,7 @@ def generate_ai_analysis(gemini_key: str, match: dict) -> str:
             except Exception as e:
                 print(f"[WARN] Gemini {model} error: {e}")
                 break
-    return ""
+    return ("", False)
 
 
 def analyze_event(ev: dict, league_name: str, standings: dict, forms: dict):
@@ -398,149 +406,4 @@ def analyze_event(ev: dict, league_name: str, standings: dict, forms: dict):
     if (fav_max - fav_min) >= 0.15:
         alerts.append("業者間オッズ差大")
 
-    h_stat = find_team_stat(standings, home)
-    a_stat = find_team_stat(standings, away)
-    h_form = find_team_form(forms, home)
-    a_form = find_team_form(forms, away)
-    home_label = format_team_label(home, h_stat, h_form)
-    away_label = format_team_label(away, a_stat, a_form)
-
-    blowout_score = None
-    if h_stat and a_stat:
-        fav_st = h_stat if fav_side == "HOME" else a_stat
-        dog_st = a_stat if fav_side == "HOME" else h_stat
-        cnt = 0
-        if fav_st["gf_avg"] >= 1.8:
-            cnt += 1
-        if fav_st["ga_avg"] <= 1.0:
-            cnt += 1
-        if dog_st["gf_avg"] <= 1.0:
-            cnt += 1
-        if dog_st["ga_avg"] >= 1.6:
-            cnt += 1
-        blowout_score = f"{cnt}/4項目(休養差除く)"
-
-    if win_pct >= 62 and best_metrics["get_pct"] >= 60:
-        stars = 4
-        rec_type = "確信型候補"
-    elif best_metrics["get_pct"] >= 58 and best_metrics["ev_pct"] >= -5.0:
-        stars = 3
-        rec_type = "的中率型候補"
-    else:
-        stars = 2
-        rec_type = "参考（ハンデ確認要）"
-
-    if league_name == "EL" and stars >= 4:
-        stars = 3
-
-    return {
-        "id": ev.get("id"),
-        "league": league_name,
-        "kickoff_jst": kickoff_jst.strftime("%Y-%m-%d %H:%M"),
-        "home": home_label,
-        "away": away_label,
-        "favorite_side": fav_side,
-        "favorite_team": fav_team,
-        "odds_avg": {"fav": round(o_fav, 2), "draw": round(o_draw, 2), "dog": round(o_dog, 2)},
-        "fav_odds_range": fav_range,
-        "fair_prob_pct": {"fav": win_pct, "draw": round(p_draw * 100, 1), "dog": round(p_dog * 100, 1)},
-        "estimated_handicap": best_h,
-        "metrics_at_est": best_metrics,
-        "preliminary_type": rec_type,
-        "preliminary_stars": stars,
-        "alerts": alerts,
-        "blowout_auto": blowout_score,
-        "ai_analysis": "",
-        "bookmaker_count": len(home_odds),
-    }
-
-
-def notify_discord(webhook_url: str, payload: dict, site_url: str):
-    if not webhook_url:
-        return
-    matches = payload.get("matches", [])
-    star4 = [m for m in matches if m.get("preliminary_stars", 0) >= 4]
-    lines = [
-        f"⚽ **海外サッカー自動予想を更新しました**（{payload['generated_at_jst']}）",
-        f"対象: {payload['match_count']}試合（{payload['window_jst']}）",
-    ]
-    if star4:
-        lines.append("【★4候補】")
-        for m in star4[:5]:
-            ev = m["metrics_at_est"]["ev_pct"]
-            lines.append(
-                f"・{m['home']} vs {m['away']}（出し: {m['favorite_team']} / 推定: {m['estimated_handicap']} / EV: {ev:+.1f}%）"
-            )
-    else:
-        lines.append("【★4候補】該当なし")
-
-    if site_url:
-        lines.append(f"▼ サイトで確認する\n{site_url}")
-
-    body = json.dumps({"content": "\n".join(lines)}).encode("utf-8")
-    req = urllib.request.Request(
-        webhook_url,
-        data=body,
-        headers={"Content-Type": "application/json", "User-Agent": "SoccerPredictorBot/1.0"},
-        method="POST",
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            print(f"Discord notified: {resp.status}")
-    except Exception as e:
-        print(f"[WARN] Discord notification failed: {e}")
-
-
-def main():
-    api_key = os.environ.get("ODDS_API_KEY", "").strip()
-    if not api_key:
-        raise RuntimeError("環境変数 ODDS_API_KEY が設定されていません。")
-    fd_key = os.environ.get("FOOTBALL_DATA_KEY", "").strip()
-    gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
-    webhook_url = os.environ.get("DISCORD_WEBHOOK_URL", "").strip()
-    site_url = os.environ.get("SITE_URL", "").strip()
-
-    now_jst = datetime.now(JST)
-    start_jst = now_jst.replace(hour=19, minute=0, second=0, microsecond=0)
-    end_jst = (start_jst + timedelta(days=1)).replace(hour=9, minute=0, second=0, microsecond=0)
-
-    from_iso = start_jst.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    to_iso = end_jst.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-    results = []
-    for sport_key, league_name, fd_code in TARGET_LEAGUES:
-        events = fetch_league_odds(api_key, sport_key, from_iso, to_iso)
-        standings = {}
-        forms = {}
-        if events and fd_key and fd_code:
-            standings = fetch_standings(fd_key, fd_code)
-            forms = fetch_recent_forms(fd_key, fd_code)
-            time.sleep(1.5)
-        for ev in events:
-            parsed = analyze_event(ev, league_name, standings, forms)
-            if parsed:
-                results.append(parsed)
-
-    results.sort(key=lambda x: (-x["preliminary_stars"], x["kickoff_jst"]))
-
-    if gemini_key:
-        for m in results[:5]:
-            m["ai_analysis"] = generate_ai_analysis(gemini_key, m)
-            time.sleep(5.0)
-
-    os.makedirs("data", exist_ok=True)
-    payload = {
-        "generated_at_jst": now_jst.strftime("%Y-%m-%d %H:%M:%S"),
-        "window_jst": f"{start_jst.strftime('%Y-%m-%d %H:%M')} 〜 {end_jst.strftime('%Y-%m-%d %H:%M')}",
-        "match_count": len(results),
-        "matches": results,
-    }
-    with open("data/predictions.json", "w", encoding="utf-8") as f:
-        json.dump(payload, f, ensure_ascii=False, indent=2)
-
-    print(f"Updated data/predictions.json ({len(results)} matches)")
-    notify_discord(webhook_url, payload, site_url)
-
-
-if __name__ == "__main__":
-    main()
+    h_stat = find_team_stat(
