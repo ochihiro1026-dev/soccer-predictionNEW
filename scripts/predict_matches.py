@@ -260,20 +260,37 @@ def fetch_league_odds(api_key: str, sport_key: str, from_iso: str, to_iso: str) 
 def generate_ai_analysis(gemini_key: str, match: dict) -> str:
     if not gemini_key:
         return ""
-    prompt = f"""あなたは海外サッカーの予想アナリストです。以下の試合についてGoogle検索で最新のチーム情報（怪我人・出場停止・復帰・監督交代・ミッドウィーク日程・過密日程）を確認し、13項目の予想ルールに沿って日本語で簡潔に分析してください。
+    alerts_str = ", ".join(match["alerts"]) if match["alerts"] else "なし"
+    blowout_str = match.get("blowout_auto") or "未算出"
+    prompt = f"""あなたは海外サッカーの予想アナリストです。以下の試合についてGoogle検索で最新のチーム情報・試合前プレビュー・公式発表を調べ、13項目の予想ルールに厳密に沿って詳細な予想レポートを日本語で作成してください。
 
 【試合データ】
 ・大会 / 日時: {match['league']} / {match['kickoff_jst']} JST
 ・対戦: {match['home']} vs {match['away']}
 ・本命（出し）: {match['favorite_team']}（{match['favorite_side']}）
-・勝率(上乗せ除去後): {match['fair_prob_pct']['fav']}% / 推定ハンデ: {match['estimated_handicap']} / 期待値: {match['metrics_at_est']['ev_pct']:+.1f}%
-・オッズ幅: {match['fav_odds_range']}
-・注意タグ: {', '.join(match['alerts']) if match['alerts'] else 'なし'}
+・勝率(上乗せ除去後): {match['fair_prob_pct']['fav']}% / 引き分け {match['fair_prob_pct']['draw']}% / 相手 {match['fair_prob_pct']['dog']}%
+・推定ハンデ: {match['estimated_handicap']}（全勝ち {match['metrics_at_est']['full_win_pct']}% / 貰い {match['metrics_at_est']['get_pct']}% / 期待値 {match['metrics_at_est']['ev_pct']:+.1f}%）
+・オッズ幅: {match['fav_odds_range']}（集計{match['bookmaker_count']}社）
+・大勝チェック仮判定: {blowout_str}
+・注意タグ: {alerts_str}
 
-【出力ルール（表は使わず、箇条書きのみ・150〜220文字程度）】
-・欠場/復帰：主力選手の欠場・出場停止・復帰（未確認や1媒体のみの場合はその旨を明記）
-・日程/監督：休養日数やミッドウィーク試合、監督・環境の注意点
-・判定メモ：出し中心の方針・大勝チェック・逆の例外条件に照らした一言（確定情報がない見出しだけの噂は根拠にしない）"""
+【出力フォーマット（表は使わず、以下の4見出し・箇条書きで600〜850文字程度）】
+■1. 欠場・出場停止・復帰
+・本命側と相手側の主力欠場・出場停止・復帰選手（必ず今季の移籍・所属を前提とし、1媒体のみの情報は「1媒体のみ」と明記、未確認は「未確認」と書く）
+・控え選手の厚さと交代影響
+
+■2. チーム状態・戦術傾向
+・ホーム/アウェイ別の得失点傾向と直近5試合の勢い（僅差勝ちの多さや実力以上の結果が出ていないかも確認）
+・戦術的な噛み合わせ（ボール保持・カウンター・セットプレーなど）
+・大勝チェック5項目（本命攻撃・本命守備・格下攻撃不足・格下守備崩れ・休養差）の最終見立て
+
+■3. 日程・監督・審判・環境
+・休養日数とミッドウィークの欧州/国内カップ戦、主力の入れ替え・翌週の大一番の有無
+・監督交代直後・進退・出場停止の有無、主審のカード・PK傾向、ピッチ・天候
+
+■4. 13項目に基づく判定理由・総評
+・市場オッズと推定ハンデの評価（出し中心の方針、逆の例外3条件に該当するか）
+・大会/時間帯の傾向（CL/EL、19:00〜20:30開始、勝率5割前後の引分け全負けリスク）を踏まえた最終見解"""
 
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={gemini_key}"
     body = json.dumps({
@@ -287,7 +304,7 @@ def generate_ai_analysis(gemini_key: str, match: dict) -> str:
         method="POST",
     )
     try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
+        with urllib.request.urlopen(req, timeout=45) as resp:
             res = json.loads(resp.read().decode("utf-8"))
         parts = res.get("candidates", [{}])[0].get("content", {}).get("parts", [])
         text = "".join(p.get("text", "") for p in parts).strip()
@@ -492,10 +509,11 @@ def main():
 
     results.sort(key=lambda x: (-x["preliminary_stars"], x["kickoff_jst"]))
 
+    # 無料枠対策として上位5試合に詳細AIレポートを付与
     if gemini_key:
         for m in results[:5]:
             m["ai_analysis"] = generate_ai_analysis(gemini_key, m)
-            time.sleep(4.0)
+            time.sleep(5.0)
 
     os.makedirs("data", exist_ok=True)
     payload = {
